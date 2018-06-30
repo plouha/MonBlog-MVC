@@ -18,7 +18,7 @@ class Admin extends Modele {
 
         $verify = password_verify($pass, $hash);
 
-        if($verify) {
+        if ($verify) {
 
             $sql = "SELECT id FROM T_ADMIN WHERE pseudo= '$pseudo'";
             $membre = $this->executerRequete($sql, array($pseudo, $pass));
@@ -26,8 +26,7 @@ class Admin extends Modele {
             if ($membre->rowCount() == 1) {
                 return $membre->fetch();
             }
-        }
-        else {
+        } else {
             $vue = new Vue("ErreurAdmin");
             $vue->generer(array(NULL));
         }

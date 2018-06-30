@@ -21,7 +21,7 @@ include_once 'head.php';
                 <div class="form-row">
                     <h2>Supprimer votre compte</h2>
 
-                    <form <?php if(isset($membre['id']) AND $membre['id']) ?> action="<?= 'index.php?action=confirmer3&id=' .$membre['id']?>" method="post" >
+                    <form <?php if (isset($membre['id']) AND $membre['id']) ?> action="<?= 'index.php?action=confirmer3&id=' .$membre['id']?>" method="post" >
                         <div class="form-group">
                             <br/>
                             <br/>

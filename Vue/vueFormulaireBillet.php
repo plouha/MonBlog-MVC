@@ -23,10 +23,10 @@ include_once 'head.php';
                     <div class="form-row">
                         <h2>Ecrire un nouvel article</h2>
                             <?php
-                                if(isset($insert_erreur) AND $insert_erreur) :
+                                if (isset($insert_erreur) AND $insert_erreur) :
                             ?>
                         <p><strong>Veuillez renseigner tout les champs, merci !</strong></p>
-                                <?php                            endif;?>
+                                <?php                            endif; ?>
                         <form action="index.php?action=ecrireBillet" method="post">
                             <div class="form-group">                                
                                 <label for="titre"><strong>Titre : </strong></label>
@@ -37,7 +37,7 @@ include_once 'head.php';
                                 <button type="submit" class="btn btn-outline-primary">Enregistrer</button> <a class="btn btn-outline-warning" href="index.php?action=Admin">Retour</a>
                                 <br/>
                                 <br/>
-                            </div>    
+                            </div>
 
                         </form>                    
                     </div>

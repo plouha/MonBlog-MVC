@@ -25,14 +25,14 @@ class Commentaire extends Modele {
     public function ajouterCommentaire($auteur, $contenu, $idBillet) {
         $sql = 'insert into T_COMMENTAIRE(COM_DATE, COM_AUTEUR, COM_CONTENU, BIL_ID)'
             . ' values(?, ?, ?, ?)';
-        $date = date(DATE_W3C);  // Récupère la date courante
+        $date = date(DATE_W3C); // Récupère la date courante
         $this->executerRequete($sql, array($date, $auteur, $contenu, $idBillet));
     }
 
 
     //Méthode qui récupère tous les commentaires
 
-    public function getBlog2(){
+    public function getBlog2() {
         $sql = 'select COM_ID as id, COM_DATE as date, COM_AUTEUR as auteur, COM_CONTENU as contenu, val as val'
                 . '  from T_COMMENTAIRE where val="B" order by id desc';
                 
@@ -51,14 +51,13 @@ class Commentaire extends Modele {
 
             return $commentaire->fetch();               // Si c'est le cas, on l'affiche
 
-        }
-        else {
+        } else {
                 throw new Exception("Aucun commentaire ne correspond à l'identifiant '$idCom'");
             }
         }
 
     //Méthode qui réalise la modification de la base de données
-    public function moder($idCom, $val, $contenu){
+    public function moder($idCom, $val, $contenu) {
 
         $sql = "UPDATE T_COMMENTAIRE SET val= ?, COM_CONTENU= ?  WHERE COM_ID=$idCom";
 

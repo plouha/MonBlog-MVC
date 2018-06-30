@@ -23,7 +23,7 @@ include_once 'head.php';
                     <h2>Modifier un commentaire</h2>
    
                         <?php
-                            if(isset($insert_erreur) AND isset($insert_erreur)) {
+                            if (isset($insert_erreur) AND isset($insert_erreur)) {
                         ?>
 
                             <p><strong>Veuillez renseigner tout les champs, merci !</strong></p>
@@ -31,7 +31,7 @@ include_once 'head.php';
                             } ;
                         ?>
 
-                    <form <?php if(isset($commentaire['id']) AND $commentaire['id']) ?>  action="<?= 'index.php?action=moderer&id=' . $commentaire['id'] ?>" method="post" >
+                    <form <?php if (isset($commentaire['id']) AND $commentaire['id']) ?>  action="<?= 'index.php?action=moderer&id=' . $commentaire['id'] ?>" method="post" >
                         <div class="form-group"> 
                             <br/>
                             <br/> 
@@ -39,14 +39,14 @@ include_once 'head.php';
                             <br/>                                
                             <label for="val"><strong>Statut du commentaire : </strong></label>
                             <br/>
-                                <input class="form-control" name="val" id="val" type="text" <?php if(isset($commentaire['id']) AND $commentaire['id']) :?> value="<?= htmlspecialchars($commentaire['val']);?>"<?php endif;?>  required>
+                                <input class="form-control" name="val" id="val" type="text" <?php if (isset($commentaire['id']) AND $commentaire['id']) :?> value="<?= htmlspecialchars($commentaire['val']);?>"<?php endif;?>  required>
                             <br/>
                             <label for="contenu"><strong>Contenu : </strong>
                                 <br/>
 
                             </label>
                             <br/>
-                                <textarea name="contenu" id="contenu" type="text" rows="5" cols="80"><?php if(isset($commentaire['id']) AND $commentaire['id']) :?> <?= nl2br(htmlspecialchars($commentaire['contenu']));?><?php endif;?></textarea></label></p>
+                                <textarea name="contenu" id="contenu" type="text" rows="5" cols="80"><?php if (isset($commentaire['id']) AND $commentaire['id']) :?> <?= nl2br(htmlspecialchars($commentaire['contenu']));?><?php endif;?></textarea></label></p>
                             <br/>
 
                             

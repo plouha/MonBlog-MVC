@@ -21,7 +21,7 @@ include_once 'head.php';
                     <h2>Supprimer un article</h2>
                         
 
-                    <form <?php if(isset($billet['id']) AND $billet['id']) ?>  action="<?= 'index.php?action=confirmer&id=' . $billet['id'] ?>" method="post" >
+                    <form <?php if (isset($billet['id']) AND $billet['id']) ?>  action="<?= 'index.php?action=confirmer&id=' . $billet['id'] ?>" method="post" >
                         <div class="form-group">
                             <br/> 
                             <br/>                               

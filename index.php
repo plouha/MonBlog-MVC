@@ -8,6 +8,6 @@
 
 require 'Controleur/Routeur.php'; // On appelle le routeur
 
-$routeur = new Routeur();	//on crée une instance de routeur
-$routeur->routerRequete();  // et on appelle la méthode
+$routeur = new Routeur(); //on crée une instance de routeur
+$routeur->routerRequete(); // et on appelle la méthode
 

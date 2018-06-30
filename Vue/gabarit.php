@@ -75,7 +75,7 @@
         </aside><!-- / fin du blog-sidebar -->
 
       </div><!-- / fin du row -->
-      <?php include_once 'vue/footer.php';?>
+      <?php include_once 'vue/footer.php'; ?>
     </main><!-- / fin du container -->
 
   </body>

@@ -44,8 +44,7 @@ class Vue {
             require $fichier;
             // Arrêt de la temporisation et renvoi du tampon de sortie
             return ob_get_clean();
-        }
-        else {
+        } else {
             // Sinon on on récupère l'exception et on affiche le message
             throw new Exception("Fichier '$fichier' introuvable");
         }

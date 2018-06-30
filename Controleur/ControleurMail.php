@@ -49,9 +49,9 @@ class ControleurMail {
         $this->sujet = strip_tags($sujet);
         $this->message = strip_tags($message);
 
-        $this->headers = 'From:'.$this->email."\r\n";
-        $this->headers.='MIME-version: 1.0'."\r\n";
-        $this->headers.='Content-type: text/html; charset=utf-8'."\r\n";
+        $this->headers = 'From:' . $this->email . "\r\n";
+        $this->headers.='MIME-version: 1.0' . "\r\n";
+        $this->headers.='Content-type: text/html; charset=utf-8' . "\r\n";
 
         mail($this->to, $this->sujet, $this->message, $this->headers);
 
@@ -62,7 +62,7 @@ class ControleurMail {
     public function vueConfirmeMail() {
 
         $vue = new Vue("ConfirmeMail");
-        $vue->generer(array (null));
+        $vue->generer(array(null));
     }
 
 }

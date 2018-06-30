@@ -22,7 +22,7 @@ class ControleurMembre
     }
 
     //affiche la page d'inscription
-    public function vueMembre()  {
+    public function vueMembre() {
         session_start();
             $vue = new Vue("Membre"); // Affiche formulaire pour un nouveau membre
             $vue->generer(array(null));
@@ -39,27 +39,27 @@ class ControleurMembre
     public function erreurPwd() {
 
         $vue = new Vue("erreurPwd");
-        $vue->generer(array (null));
+        $vue->generer(array(null));
     }
 
     //erreur de Membre
     public function erreurMembre() {
 
         $vue = new Vue("erreurMembre");
-        $vue->generer(array (null));
+        $vue->generer(array(null));
     }
 
-         //affiche la page de confirmation d'inscription d'un membre
+    //affiche la page de confirmation d'inscription d'un membre
     public function vueConfirmeMembre() {
 
         $vue = new Vue("ConfirmeMembre");
-        $vue->generer(array (null));
+        $vue->generer(array(null));
     }
 
     public function chercheMembre() { // page pour chercher un membre
         session_start();
         $vue = new Vue("AdminMembre");
-        $vue->generer(array (null));
+        $vue->generer(array(null));
     }
 
     //affiche la page de modification du membre
@@ -76,7 +76,7 @@ class ControleurMembre
         session_start();
         $this->membre->updateMembre($idCompte, $pseudo, $pass, $mail);
         $vue = new Vue("AdminMembre");
-        $vue->generer(array (NULL));
+        $vue->generer(array(NULL));
     }
 
     public function confirmation3($idCompte) {       // Suppression du membre
@@ -84,7 +84,7 @@ class ControleurMembre
         $membre = $this->membre->getMembre ($idCompte);
 
         $vue = new Vue("Confirmation3");
-        $vue->generer(array ('membre' => $membre));
+        $vue->generer(array('membre' => $membre));
     }
 
     //confirme la suppression d'un membre
@@ -113,6 +113,6 @@ class ControleurMembre
             $vue->generer(array($_SESSION['id'], $_SESSION['pseudo']));
 
 
-        }
+    }
 }
 

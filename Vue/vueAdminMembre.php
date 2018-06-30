@@ -20,7 +20,7 @@ include_once 'head.php';
                 $utilisateur = "";
                 $utilisateur = $_SESSION['id'];
 
-          ?>
+            ?>
 
             <div > 
                 <h3>Que souhaitez-vous faire ?</h3>         
@@ -47,13 +47,12 @@ include_once 'head.php';
 
 
         <?php
-            }
-            else {
+            } else {
             ?>
             <div class="container" >
 
                 <?php
-                    if(isset($insert_erreur) AND $insert_erreur) :
+                    if (isset($insert_erreur) AND $insert_erreur) :
                   ?>            
                     <p><strong style="color: red">Mauvais identifiants ... recommencez !</strong></p>
                   
@@ -75,8 +74,8 @@ include_once 'head.php';
 
             <?php
 
-             }
-             ?>
+                }
+                ?>
 
         </div>
     </div>

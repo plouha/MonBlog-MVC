@@ -81,13 +81,12 @@ class ControleurBillet {
     if ($params == null) {
     $vue = new Vue("FormulaireBillet"); // pas de paramètre --> formulaire pour un nouvel article
     $vue->generer(array (null));
-    }    
-    else {
+    } else {
     $billet = $this->billet->getBillet($params); // sinon affiche le formulaire pour modifier l'article choisi
     $vue = new Vue("ModifierBillet");
     $vue->generer(array('billet' => $billet));
+      }
     }
-  }
 
 }
 

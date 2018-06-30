@@ -32,16 +32,16 @@ include_once 'head.php';
                             } ;
                         ?>
 
-                    <form <?php if(isset($billet['id']) AND $billet['id']) ?>  action="<?= 'index.php?action=enregistrerModif&id=' . $billet['id'] ?>" method="post" >
+                    <form <?php if(isset ($billet['id']) AND $billet['id']) ?>  action="<?= 'index.php?action=enregistrerModif&id=' . $billet['id'] ?>" method="post" >
                         <div class="form-group">                                
                             <label for="titre"><strong>Titre : </strong></label>
                             <br/>
-                                <input class="form-control" <?php if(isset($billet['id']) AND $billet['id']) :?> value="<?= htmlspecialchars($billet['titre']);?>"<?php endif;?> name="titre" id="titre" type=text required>
+                                <input class="form-control" <?php if (isset($billet['id']) AND $billet['id']) :?> value="<?= htmlspecialchars($billet['titre']);?>"<?php endif; ?> name="titre" id="titre" type=text required>
                             <br/>
                             <label for="contenu"><strong>Contenu : </strong>
                                 <br/>
 
-                                <textarea name="contenu" id="contenu" rows="20" cols="80"><?php if(isset($billet['id']) AND $billet['id']) :?><?= nl2br(htmlspecialchars($billet['contenu']));?><?php endif;?></textarea></label></p>
+                                <textarea name="contenu" id="contenu" rows="20" cols="80"><?php if (isset($billet['id']) AND $billet['id']) :?><?= nl2br(htmlspecialchars($billet['contenu'])); ?><?php endif; ?></textarea></label></p>
                             <br/>
                             </label>
                             

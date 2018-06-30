@@ -23,19 +23,17 @@ class Membre extends Modele {
         $member = $resultat->pseudo;
         $email = $resultat->mail;
 
-        if($member == $pseudo){
+        if ($member == $pseudo){
             $vue = new Vue("ErreurDoublon");
             $vue->generer(array(NULL));
-        }
-        elseif($email == $mail){
+        } elseif ($email == $mail){
             $vue = new Vue("ErreurMail");
             $vue->generer(array(NULL));
-        }
-        else{
+        } else {
         $sql = 'insert into T_MEMBRE (pseudo, mail, pass, date) values(?, ?, ?, ?)';
-        $date = date(DATE_W3C);  // Récupère la date courante
+        $date = date(DATE_W3C); // Récupère la date courante
 
-        $this->executerRequete($sql, array($pseudo, $mail, $pass, $date));        // avec mot de passe crypté
+        $this->executerRequete($sql, array($pseudo, $mail, $pass, $date)); // avec mot de passe crypté
 
         }
     }
@@ -52,16 +50,15 @@ class Membre extends Modele {
 
         $verify = password_verify($pass, $hash);
 
-        if($verify) {
+        if ($verify) {
 
             $sql = "SELECT id FROM T_MEMBRE WHERE pseudo= '$pseudo'";
             $membre = $this->executerRequete($sql, array($pseudo, $pass));
 
-           if ($membre->rowCount() == 1) {
+            if ($membre->rowCount() == 1) {
                 return $membre->fetch();
             }
-        }
-        else {
+        } else {
             $vue = new Vue("ErreurMembre");
             $vue->generer(array(NULL));
         }
@@ -78,14 +75,13 @@ class Membre extends Modele {
         if ($membre->rowCount() == 1) {             // on s'assure qu'il n'y a qu'un résultat récupéré
 
             return $membre->fetch();
-        }
-        else {      // sinon message d'erreur
+        } else {      // sinon message d'erreur
             throw new Exception("Aucun membre ne correspond à l'identifiant '$idCompte'");
         }
     }
 
     //Méthode qui réalise la modification de la base de données
-    public function updateMembre($idCompte, $pseudo, $pass, $mail){
+    public function updateMembre($idCompte, $pseudo, $pass, $mail) {
 
         $sql = "UPDATE T_MEMBRE SET pseudo= ?, pass= ?, mail= ?  WHERE id=$idCompte";
 

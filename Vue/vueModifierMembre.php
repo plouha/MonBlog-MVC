@@ -36,27 +36,27 @@ include_once 'head.php';
 
                 ?>
 
-                    <form  <?php if(isset($membre['id']) AND $membre['id']) ?> action="<?= 'index.php?action=modifMembre&id=' . $membre['id'] ?>" method="post" >
+                    <form  <?php if (isset($membre['id']) AND $membre['id']) ?> action="<?= 'index.php?action=modifMembre&id=' . $membre['id'] ?>" method="post" >
                         <div class="form-group"> 
                             <br/>
                             <br/>
                             <div class="form-group">                                
                             <label for="pseudo"><strong>Pseudo : </strong></label>
                             <br/>
-                                <input class="form-control" name="pseudo" id="pseudo" type="text" <?php if(isset($membre['id']) AND $membre['id']) ?>value="<?= nl2br(htmlspecialchars($membre['pseudo']));?>"  required>
+                                <input class="form-control" name="pseudo" id="pseudo" type="text" <?php if (isset($membre['id']) AND $membre['id']) ?>value="<?= nl2br(htmlspecialchars($membre['pseudo']));?>"  required>
                             </div>
                             <br/>
 
                             <div class="form-group">
                             <label for="pass"><strong>Mot de passe : </strong></label>
                             <br/>
-                                <input class="form-control" name="pass" id="pass" type="text" <?php if(isset($membre['id']) AND $membre['id']) ?>value="" Placeholder="Entrez votre nouveau mot de passe ..."required>
+                                <input class="form-control" name="pass" id="pass" type="text" <?php if (isset($membre['id']) AND $membre['id']) ?>value="" Placeholder="Entrez votre nouveau mot de passe ..."required>
                             </div>
                             <br/>
                             <div class="form-group">
                             <label for="mail"><strong>Mail : </strong></label>
                             <br/>
-                                <input class="form-control" name="mail" id="mail" type="email"  <?php if(isset($membre['id']) AND $membre['id']) ?>value="<?= nl2br(htmlspecialchars($membre['mail']));?>" required>
+                                <input class="form-control" name="mail" id="mail" type="email"  <?php if (isset($membre['id']) AND $membre['id']) ?>value="<?= nl2br(htmlspecialchars($membre['mail']));?>" required>
                             </div>
                             <br/>
                             <br/>
@@ -71,8 +71,7 @@ include_once 'head.php';
 </main>
 
             <?php  
-            }
-            else{
+            } else {
                     echo 'pas de session en cours';
             };
             ?>

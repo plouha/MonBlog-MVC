@@ -17,8 +17,8 @@ class ControleurAccueil {
         $this->billet = new Billet();
     }
 
-		// Lorsque la fonction Accueil est appelée depuis le routeur
-		// Affiche la liste de tous les billets du blog
+    // Lorsque la fonction Accueil est appelée depuis le routeur
+    // Affiche la liste de tous les billets du blog
     public function accueil() {
         $billets = $this->billet->getBillets();
         $vue = new Vue("Accueil");

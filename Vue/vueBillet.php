@@ -24,7 +24,7 @@ session_start();
     </h2><br/>
 
 </header>
-    <?php foreach ($commentaires as $commentaire){ 
+    <?php foreach ($commentaires as $commentaire) {
     ?>
     
     <h5><strong><em><?= htmlspecialchars($commentaire['auteur']) ?></em></strong></h5><?= date_format(date_create($commentaire['date']), "d-m-Y - H:i") ?>
@@ -63,10 +63,9 @@ if (isset($_SESSION['id']) AND isset($_SESSION['pseudo']))
 
 <?php
 
- }
-    else {
+ } else {
         echo " ";
-    } ?>
+ } ?>
 
 
 

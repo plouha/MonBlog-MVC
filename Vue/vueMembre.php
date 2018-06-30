@@ -20,7 +20,7 @@ include_once 'head.php';
             <div class="container" >            <!-- Formulaire d'inscription d'un membre -->
 
                 <?php
-                    if(isset($insert_erreur) AND $insert_erreur) :
+                    if (isset($insert_erreur) AND $insert_erreur) :
                   ?>            
                     <p><strong style="color: red">Mauvais identifiants ... recommencez !</strong></p>
                   
@@ -29,11 +29,11 @@ include_once 'head.php';
                 <form id="contact-form" method="post" role="form" action="index.php?action=enregistrerMembre">
                   <div class="form-group">
                     <label for="pseudo"><strong>Entrez votre pseudo : *</strong></label>
-                    <input type="text" name="pseudo" id="pseudo"  class="form-control" placeholder="Votre pseudo" value="<?php if(isset($pseudo)) echo htmlspecialchars($pseudo);?>" required>
+                    <input type="text" name="pseudo" id="pseudo"  class="form-control" placeholder="Votre pseudo" value="<?php if (isset($pseudo)) echo htmlspecialchars($pseudo);?>" required>
                   </div>
                   <div class="form-group">
                     <label for="email"><strong>Entrez votre email : *</strong></label>
-                    <input type="email" name="mail" id="mail"  class="form-control" placeholder="Votre email" value="<?php if(isset($mail)) echo htmlspecialchars($mail);?>" required>
+                    <input type="email" name="mail" id="mail"  class="form-control" placeholder="Votre email" value="<?php if (isset($mail)) echo htmlspecialchars($mail);?>" required>
                   </div>
                   <div class="form-group">
                     <label for="pass"><strong>Entrez votre password : *</strong></label>
