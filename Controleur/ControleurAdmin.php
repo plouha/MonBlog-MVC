@@ -30,7 +30,7 @@ class ControleurAdmin {
 
       if (!$admin)
       {
-          //on indique que tout les champs ne sont pas remplis ou une erreur
+          //on indique que si tout les champs ne sont pas remplis ou une erreur
           $insert_erreur = true;
 
       }

@@ -27,7 +27,7 @@ include_once 'head.php';
                             } ;
                         ?>
 
-                    <form <?php if(isset($comment['id']) AND $comment['id']) ?>  action="<?= 'index.php?action=updateCommentaire&id=' . $comment['id'] ?>" method="post" >
+                    <form <?php if(isset($commentaire['id']) AND $commentaire['id']) ?>  action="<?= 'index.php?action=moderer&id=' . $commentaire['id'] ?>" method="post" >
                         <div class="form-group"> 
                             <br/>
                             <br/> 
@@ -35,18 +35,18 @@ include_once 'head.php';
                             <br/>                                
                             <label for="val"><strong>Statut du commentaire : </strong></label>
                             <br/>
-                                <input class="form-control" <?php if(isset($comment['id']) AND $comment['id']) :?> value="<?= strip_tags($comment['val']);?>"<?php endif;?> name="val" id="val" type=text required>
+                                <input class="form-control" name="val" id="val" type="text" <?php if(isset($commentaire['id']) AND $commentaire['id']) :?> value="<?= strip_tags($commentaire['val']);?>"<?php endif;?>  required>
                             <br/>
                             <label for="contenu"><strong>Contenu : </strong>
                                 <br/>
 
-                                <textarea name="contenu" id="contenu" rows="5" cols="80"><?php if(isset($comment['id']) AND $comment['id']) :?><?= nl2br(strip_tags($comment['contenu']));?><?php endif;?></textarea></label></p>
+                                <textarea name="contenu" id="contenu" type="text" rows="5" cols="80"><?php if(isset($commentaire['id']) AND $commentaire['id']) :?><?= nl2br(strip_tags($commentaire['contenu']));?><?php endif;?></textarea></label></p>
                             <br/>
                             </label>
                             
                             <button type="submit" class="btn btn-outline-primary" ">Modifier</button> <a class="btn btn-outline-warning" href="index.php?action=Admin">Retour</a>  
                                 <br/>
-                                <br/>                            
+                                <br/>
                         </div>
                     </form>               
                 </div>

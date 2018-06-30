@@ -18,9 +18,10 @@ class ControleurCommentaire {
     public function vue($idCom) {
       session_start();
       $commentaire = $this->commentaire->getCommentaire($idCom);
-      $vue = new Vue("FormulaireCommentaire");
+      $vue = new Vue("ModifierCom");
       $vue->generer(array('commentaire' => $commentaire)); 
   }
+
 
   // Affiche la liste de tous les commentaires du blog
     public function blog2() {
@@ -31,27 +32,27 @@ class ControleurCommentaire {
   }
 
   
-  //Confirme la modification d'un commenatire
-    public function moderer($idCom, $auteur, $commentaire) {
+  //Confirme la modification d'un commentaire
+    public function moderer($idCom, $var, $contenu) {
        session_start();
-      $this->commentaire->modifierCommentaire($idCom, $auteur, $commentaire); 
-      $vue = new Vue("Admin");
+      $this->commentaire->moder($idCom, $var, $contenu);
+      $vue = new Vue("Admin");      // on revient au menu administrateur
       $vue->generer(array(NULL));
   }
   
   //affiche la page de confirmation de suppression d'un commentaire
-    public function vueConfirmation($idCom) {
+    public function vueConfirmation2($idCom) {
       session_start();
       $commentaire = $this->commentaire->getCommentaire($idCom);
-      $vue = new Vue("Confirmation");
+
+      $vue = new Vue("Confirmation2");
       $vue->generer(array ('commentaire' => $commentaire));
   }
   
-  //confirma le suppression d'un commentaire
-    public function confirmer($idCom) {
-        session_start();
-      $this->commentaire->confirmer($idCom); 
-      $vue = new Vue("Admin");
-      $vue->generer(array(NULL));
+  //confirme la suppression d'un commentaire
+    public function confirmer2($idCom) {
+      $this->commentaire->confirmer2($idCom);
+      $this->blog2();
+
   }
 }

@@ -69,6 +69,7 @@
           <div class="p-3 mb-3 bg-light rounded">
           <p class="mb-1"><h4 class="font-italic">Contactez-nous ...</h4></p>
             <a>Vous pouvez nous faire parvenir un mail</a><br>
+              <br />
             <a class="btn btn-outline-primary" href="#">Contact</a>
           </div>
         </aside><!-- / fin du blog-sidebar -->

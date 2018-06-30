@@ -32,13 +32,13 @@ class Billet extends Modele {
             throw new Exception("Aucun billet ne correspond à l'identifiant '$idBillet'");
     }    
 
-    // fonction qui realise l'insertion dans la base de données   
+    // Méthode qui realise l'insertion dans la base de données   
     public function insertBillet($titre, $contenu){
         $sql = 'INSERT INTO T_BILLET(BIL_TITRE, BIL_CONTENU) VALUES(?, ?)';
         $this->executerRequete($sql, array($titre, $contenu));
     }
 
-    // fonction qui realise la modification dans la base de données
+    // Méthode qui realise la modification dans la base de données
     public function modifBillet($idBillet, $titre, $contenu){    
 
         $sql = "UPDATE T_BILLET SET BIL_TITRE = ?, BIL_CONTENU = ? WHERE BIL_ID=$idBillet";
@@ -48,13 +48,13 @@ class Billet extends Modele {
         header("Location: index.php");
     }
     
-    //fonction qui realise la suppression dans la base de données
+    //Méthode qui realise la suppression dans la base de données
     public function confirmer($idBillet) {
 
-        $sql = "DELETE FROM T_COMMENTAIRE WHERE BIL_ID= $idBillet";
+        $sql = "DELETE FROM T_COMMENTAIRE WHERE BIL_ID=$idBillet";
         $this->executerRequete($sql, array($idBillet));        
 
-        $sql = "DELETE FROM T_BILLET WHERE BIL_ID= $idBillet";
+        $sql = "DELETE FROM T_BILLET WHERE BIL_ID=$idBillet";
         $this->executerRequete($sql, array($idBillet));
         header("Location: index.php?action=Admin");
     }
@@ -68,10 +68,4 @@ class Billet extends Modele {
         return $billets;
     }
 
-    public function dd($variable) {
-        echo '<pre>';
-        var_dump($variable);
-        echo '<pre>';
-        die();
-    }
 }

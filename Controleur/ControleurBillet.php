@@ -20,7 +20,7 @@ class ControleurBillet {
         $this->commentaire = new Commentaire();
     }
 
-    // Affiche les détails sur un billet
+    // Affiche les détails sur un article
     public function billet($idBillet) {
         $billet = $this->billet->getBillet($idBillet);
         $commentaires = $this->commentaire->getCommentaires($idBillet);
@@ -28,21 +28,21 @@ class ControleurBillet {
         $vue->generer(array('billet' => $billet, 'commentaires' => $commentaires));
     }
 
-    // Ajoute un commentaire à un billet
+    // Ajoute un commentaire à un article
     public function commenter($auteur, $contenu, $idBillet) {
         // Sauvegarde du commentaire
         $this->commentaire->ajouterCommentaire($auteur, $contenu, $idBillet);
-        // Actualisation de l'affichage du billet
+        // Actualisation de l'affichage de l'article
         $this->billet($idBillet);
     }
-    //ajoute un billet
+    //ajoute un article
     public function ecrireBillet($titre, $contenu) {
   
         $this->billet->insertBillet($titre, $contenu);
         header("location: index.php?action=Admin");
     }
 
-    //modifie un billet
+    //modifie un article
     public function modifierBillet($idBillet, $titre, $contenu) { 
         session_start();
 
@@ -52,7 +52,7 @@ class ControleurBillet {
 
     }
 
-    //affiche la page de confirmation de suppression d'un billet
+    //affiche la page de confirmation de suppression d'un article
     public function vueConfirmation($idBillet) {
         session_start();
         $billet = $this->billet->getBillet($idBillet);
@@ -62,9 +62,8 @@ class ControleurBillet {
     }
     
 
-    //confirme la suppression d'un billet
+    //confirme la suppression d'un article
     public function confirmer($idBillet) {
-
         $this->billet->confirmer($idBillet); 
         $this->blog();
     }
@@ -80,11 +79,11 @@ class ControleurBillet {
     public function vue($params = null) {
     session_start();
     if ($params == null) {
-    $vue = new Vue("FormulaireBillet");
+    $vue = new Vue("FormulaireBillet"); // pas de paramètre --> formulaire pour un nouvel article
     $vue->generer(array (null));
     }    
     else {
-    $billet = $this->billet->getBillet($params);
+    $billet = $this->billet->getBillet($params); // sinon affiche le formulaire pour modifier l'article choisi
     $vue = new Vue("ModifierBillet");
     $vue->generer(array('billet' => $billet));
     }
