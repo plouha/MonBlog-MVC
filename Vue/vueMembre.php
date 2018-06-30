@@ -32,7 +32,7 @@ include_once 'head.php';
                     <input type="text" name="pseudo" id="pseudo"  class="form-control" placeholder="Votre pseudo" value="<?php if(isset($pseudo)) echo $pseudo;?>" required>
                   </div>
                   <div class="form-group">
-                    <label for="mail"><strong>Entrez votre email : *</strong></label>
+                    <label for="email"><strong>Entrez votre email : *</strong></label>
                     <input type="email" name="mail" id="mail"  class="form-control" placeholder="Votre email" value="<?php if(isset($mail)) echo $mail;?>" required>
                   </div>
                   <div class="form-group">

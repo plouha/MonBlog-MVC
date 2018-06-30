@@ -21,8 +21,7 @@ class ControleurAdmin {
 
   //connexion a l'administration
     public function gestionAdmin($pseudo, $pass){
-      
-      
+
       $pseudo = htmlspecialchars($pseudo);
       $pass = htmlspecialchars($pass);
       

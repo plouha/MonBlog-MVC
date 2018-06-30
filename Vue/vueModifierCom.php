@@ -23,7 +23,7 @@ include_once 'head.php';
                         ?>
 
                             <p><strong>Veuillez renseigner tout les champs, merci !</strong></p>
-                        <?php  
+                        <?php
                             } ;
                         ?>
 
@@ -40,7 +40,7 @@ include_once 'head.php';
                             <label for="contenu"><strong>Contenu : </strong>
                                 <br/>
 
-                                <textarea name="contenu" id="contenu" type="text" rows="5" cols="80"><?php if(isset($commentaire['id']) AND $commentaire['id']) :?><?= nl2br(strip_tags($commentaire['contenu']));?><?php endif;?></textarea></label></p>
+                                <textarea name="contenu" id="contenu" type="text" rows="5" cols="80"><?php if(isset($commentaire['id']) AND $commentaire['id']) :?> <?= nl2br(strip_tags($commentaire['contenu']));?><?php endif;?></textarea></label></p>
                             <br/>
                             </label>
                             

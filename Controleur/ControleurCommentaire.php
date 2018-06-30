@@ -17,7 +17,9 @@ class ControleurCommentaire {
   //affiche le formulaire de moderation d'un commentaire
     public function vue($idCom) {
       session_start();
+
       $commentaire = $this->commentaire->getCommentaire($idCom);
+
       $vue = new Vue("ModifierCom");
       $vue->generer(array('commentaire' => $commentaire)); 
   }
@@ -33,9 +35,9 @@ class ControleurCommentaire {
 
   
   //Confirme la modification d'un commentaire
-    public function moderer($idCom, $var, $contenu) {
+    public function moderer($idCom, $val, $contenu) {
        session_start();
-      $this->commentaire->moder($idCom, $var, $contenu);
+      $this->commentaire->moder($idCom, $val, $contenu);
       $vue = new Vue("Admin");      // on revient au menu administrateur
       $vue->generer(array(NULL));
   }

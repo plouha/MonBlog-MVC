@@ -15,6 +15,8 @@ class ControleurMembre
     private $pseudo;
     private $mail;
     private $pass;
+//    private $compte;
+
 
     public function __construct()
     {
@@ -23,11 +25,9 @@ class ControleurMembre
 
     //affiche la page d'inscription
     public function vueMembre()  {
-//        session_start();
-//        if ($params == null) {
-            $vue = new Vue("Membre"); // pas de paramètre --> formulaire pour un nouveau membre
+        session_start();
+            $vue = new Vue("Membre"); // Affiche formulaire pour un nouveau membre
             $vue->generer(array(null));
-//        }
     }
 
     //ajoute un membre
@@ -44,26 +44,71 @@ class ControleurMembre
         $vue->generer(array (null));
     }
 
+    public function chercheMembre() { // page pour chercher un membre
+        session_start();
+        $vue = new Vue("AdminMembre");
+        $vue->generer(array (null));
+    }
+
+    //affiche la page de modification du membre
+    public function vue($idCompte) {
+        session_start();
+        $membre = $this->membre->getMembre($idCompte);    // Récupère les données pour modifier le membre choisi
+
+        $vue = new Vue("ModifierMembre");
+        $vue->generer(array('membre' => $membre));
+
+    }    
+
+    public function modifMembre($idCompte, $pseudo, $pass, $mail) { // MAJ des données du membre
+        session_start();
+        $this->membre->updateMembre($idCompte, $pseudo, $pass, $mail);
+        $vue = new Vue("AdminMembre");
+        $vue->generer(array (NULL));
+    }
+
+    public function confirmation3($idCompte) {       // Suppression du membre
+
+        $membre = $this->membre->getMembre ($idCompte);
+
+        $vue = new Vue("Confirmation3");
+        $vue->generer(array ('membre' => $membre));
+    }
+
+    //confirme la suppression d'un compte
+    public function confirmer3($idCompte) {
+        session_start();
+
+        $this->membre->confirmer3($idCompte);
+
+        session_start();
+        session_destroy();
+        header("location: index.php");
+
+    }
+
     //connexion a l'administration d'un membre
-    public function gestionMembre($pseudo, $pass)
-    {
+    public function adminMembre($pseudo, $pass) {
+        session_start();
         $pseudo = htmlspecialchars($pseudo);
         $pass = htmlspecialchars($pass);
 
-        $membre = $this->membre->getMembre($pseudo, $pass);
+        $membre = $this->membre->getAdminMembre($pseudo, $pass);
 
         if (!$membre) {
             //on indique que si tout les champs ne sont pas remplis ou une erreur
             $insert_erreur = true;
 
         } else {
-            session_start();
+
             $_SESSION['id'] = $membre;
             $_SESSION['pseudo'] = $pseudo;
 
-            $vue = new Vue("Connexion");
+            $vue = new Vue("AdminMembre");
             $vue->generer(array($_SESSION['id'], $_SESSION['pseudo']));
+
 
         }
     }
+
 }

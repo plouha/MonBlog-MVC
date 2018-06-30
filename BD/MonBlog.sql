@@ -19,17 +19,16 @@ create table T_COMMENTAIRE (
   constraint fk_com_bil foreign key(BIL_ID) references T_BILLET(BIL_ID)
 ) ENGINE=INNODB CHARACTER SET utf8 COLLATE utf8_general_ci;
 
-CREATE TABLE membre (
+CREATE TABLE T_MEMBRE (
   id               int(10) unsigned NOT NULL AUTO_INCREMENT,
-  nom_utilisateur  varchar(32)  NOT NULL,
-  mot_de_passe     char(40)     NOT NULL,
-  adresse_email    varchar(128) NOT NULL,
-  hash_validation  char(32)     NOT NULL,
-  date_creation datetime NOT NULL,
+  pseudo           varchar(32)  NOT NULL,
+  pass             char(40)     NOT NULL,
+  mail             varchar(128) NOT NULL,
+  date_creation    datetime NOT NULL,
   PRIMARY KEY (id),
-  UNIQUE KEY nom_utilisateur (nom_utilisateur),
-  UNIQUE KEY adresse_email (adresse_email),
-  KEY mot_de_passe (mot_de_passe)
+  UNIQUE KEY pseudo (pseudo),
+  UNIQUE KEY mail (mail),
+  KEY pass (pass)
 ) ENGINE=INNODB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 

@@ -25,13 +25,14 @@ class Routeur {
     private $ctrlMail;
     private $ctrlMembre;
 
+
     public function __construct() {                             // constructeur
         $this->ctrlAccueil = new ControleurAccueil();           // création d'une instance de ControleurAccueil
         $this->ctrlBillet = new ControleurBillet();             // création d'une instance de ControleurBillet
         $this->ctrlCommentaire = new ControleurCommentaire();   // création d'une instance de ControleurAdmin
         $this->ctrlAdmin = new ControleurAdmin();               // création d'une instance de ControleurAdmin
-        $this->ctrlMail = new ControleurMail();               // création d'une instance de ControleurMail
-        $this->ctrlMembre = new ControleurMembre();               // création d'une instance de ControleurMembre
+        $this->ctrlMail = new ControleurMail();                 // création d'une instance de ControleurMail
+        $this->ctrlMembre = new ControleurMembre();             // création d'une instance de ControleurMembre
     }
 
 
@@ -43,9 +44,11 @@ class Routeur {
 
    // Route une requête entrante avec exécution de l'action associée
     public function routerRequete() {
+
         try {
             if (isset($_GET['action'])) {
  
+ //---------------------------------------------------------------------------------- ARTICLES et COMMENTAIRES ---------------------
                 // si on demande une page particulière via l'url
                 if ($_GET['action'] == 'billet') {
                     $idBillet = intval($this->getParametre($_GET, 'id'));
@@ -138,31 +141,146 @@ class Routeur {
                         throw new Exception("Identifiant de commentaire non valide");
                     }
                 }
+
+                elseif ($_GET['action'] == 'confirmer2') {           // Confirme la suppression d'un commentaire
+                    $idCom = $this->getParametre($_GET, 'id');
+                    $this->ctrlCommentaire->confirmer2($idCom);
+
+                }
+
+                elseif ($_GET['action'] == 'blog') {                // Affiche la liste de tous les articles
+                    $this->ctrlBillet->blog();
+
+                }
+
+                elseif ($_GET['action'] == 'blog2') {               // Affiche la liste de tous les commentaires
+                    $this->ctrlCommentaire->blog2();
+
+                }
+
+
+// ------------------------------------------------------------------------------------  MEMBRES DU BLOG -----------------------
+
+
                 elseif ($_GET['action'] == 'membre') {              // Afficher formulaire d'inscription d'un membre
                         $this->ctrlMembre->vueMembre();
                 }
 
                 elseif ($_GET['action'] == 'enregistrerMembre') {       // Récupère les informations d'un membre
-
+                    
                     if (!empty($_POST['pseudo']) && !empty($_POST['mail']) && !empty($_POST['pass'])) {
                         $pseudo = $this->getParametre($_POST, 'pseudo');
                         $mail = $this->getParametre($_POST, 'mail');
                         $pass = $this->getParametre($_POST, 'pass');
-
+                    
                         $this->ctrlMembre->enregistrerMembre($pseudo, $mail, $pass);
-                    }
-                    else {
-                            throw new Exception("Tous les champs ne sont pas remplis");
-                    }
+                    }    
                 }
 
                 elseif ($_GET['action'] == 'confirmeMembre') {       // Confirme l'inscription d'un membre
-                        $this->ctrlMembre->vueConfirmeMembre();
+                    $this->ctrlMembre->vueConfirmeMembre();
                 }
 
-                elseif ($_GET['action'] == 'ecrireMail') {              // Afficher formulaire de rédaction d'un mail
-                        $this->ctrlMail->vueMail();
+                elseif ($_GET['action'] == 'chercheMembre') {              // Affiche formulaire de connexion d'un membre
+                        $this->ctrlMembre->chercheMembre();
                 }
+
+                elseif ($_GET['action'] == 'adminMembre') {            // Connexion d'un membre
+
+                    if (isset($_POST['pseudo']) && $_POST['pass']) {
+
+                        if (!empty($_POST['pseudo']) && !empty($_POST['pass'])) {
+                            $this->ctrlMembre->adminMembre($_POST['pseudo'], $_POST['pass']);
+                        }
+                        else {
+                            throw new Exception("Membre inconnu ... connexion impossible !");
+                        }
+                    }
+                }
+
+                elseif ($_GET['action'] == 'modifierMembre') {          // Page de modification d'un membre
+                    $idCompte = intval($this->getParametre($_GET, 'id'));
+                    if ($idCompte != 0) {
+                        $this->ctrlMembre->vue($idCompte);
+                    }
+                    else {
+                        throw new Exception("Identifiant de compte non valide");
+                    }
+
+                }
+
+                elseif ($_GET['action'] == 'modifMembre') {        // enregistre la mofication d'un membre
+                    $idCompte = intval($this->getParametre($_GET, 'id'));
+
+                    if ($idCompte != 0) {
+                        if (!empty($_POST['pseudo']) && !empty($_POST['pass']) && !empty($_POST['mail'])) {
+
+                            $pseudo = $this->getParametre($_POST, 'pseudo');
+                            $pass = $this->getParametre($_POST, 'pass');
+                            $mail = $this->getParametre($_POST, 'mail');
+
+                            $this->ctrlMembre->modifMembre($idCompte, $pseudo, $pass, $mail);
+
+                        }
+                    } else {
+                        throw new Exception("Tous les champs ne sont pas remplis !");
+                    }
+                }
+
+                elseif ($_GET['action'] == 'supprimerCompte') {
+
+                    $idCompte = intval($this->getParametre($_GET, 'id'));
+                    if ($idCompte != 0) {
+
+                        $this->ctrlMembre->Confirmation3($idCompte);   // Affiche le formulaire de confirmation
+                    } else {
+                        throw new Exception("Identifiant de compte non valide");
+                    }
+
+                }
+
+                elseif ($_GET['action'] == 'confirmer3') {           // Confirme la suppression d'un compte
+
+                    $idCompte = $this->getParametre($_GET, 'id');
+
+                    $this->ctrlMembre->confirmer3($idCompte);
+
+                }
+
+// --------------------------------------------------------------------------------- ADMINISTRATION DU BLOG --------------------
+
+
+                elseif ($_GET['action'] == 'Admin') {               // Affiche le menu administrateur
+                    $this->ctrlAdmin->vue();
+
+                }
+
+                elseif ($_GET['action'] == 'gestionAdmin') {            // Page de connexion administrateur
+                    if (isset($_POST['pseudo']) && $_POST['pass']) {
+
+                        if (!empty($_POST['pseudo']) && !empty($_POST['pass'])) {
+                            $this->ctrlAdmin->gestionAdmin($_POST['pseudo'], $_POST['pass']);
+                        }
+                        else {
+                            throw new Exception("Tous les champs ne sont pas remplis");
+                        }
+                    }
+                }
+
+                elseif ($_GET['action'] == 'deconnexion') {     // Déconnexion
+                    session_start();
+                    session_destroy();
+                    header("Location: index.php");
+                }
+
+// -------------------------------------------------------------------------------- MAIL --------------------------------------
+
+
+                elseif ($_GET['action'] == 'ecrireMail') {              // Afficher formulaire de rédaction d'un mail
+                    $this->ctrlMail->vueMail();
+                }
+
+
 
                 elseif ($_GET['action'] == 'sendMail') {            // Enregistrer et envoyer les informations d'un mail
                     if (!empty($_POST['nom']) && !empty($_POST['prenom']) && !empty($_POST['email']) && !empty($_POST['sujet']) && !empty($_POST['message'])) {
@@ -188,44 +306,8 @@ class Routeur {
                     $this->ctrlMail->enregistrerMail($nom, $prenom, $email, $sujet, $message);
                 }
 
-                elseif ($_GET['action'] == 'confirmer2') {           // Confirme la suppression d'un commentaire
-                    $idCom = $this->getParametre($_GET, 'id');
-                    $this->ctrlCommentaire->confirmer2($idCom);
+ // ---------------------------------------------------- SI AUCUNE PAGE DEMANDEE --> PAGE D'ACCUEIL ------------------------------
 
-                }
-
-                elseif ($_GET['action'] == 'blog') {                // Affiche la liste de tous les articles
-                    $this->ctrlBillet->blog();
- 
-                }
-
-                elseif ($_GET['action'] == 'blog2') {               // Affiche la liste de tous les commentaires
-                    $this->ctrlCommentaire->blog2();
-
-                }
-
-                elseif ($_GET['action'] == 'Admin') {               // Affiche le menu administrateur
-                    $this->ctrlAdmin->vue();
-
-                }
-
-                elseif ($_GET['action'] == 'gestionAdmin') {            // Page de connexion administrateur
-                    if (isset($_POST['pseudo']) && $_POST['pass']) {
-
-                        if (!empty($_POST['pseudo']) && !empty($_POST['pass'])) {
-                            $this->ctrlAdmin->gestionAdmin($_POST['pseudo'], $_POST['pass']);
-                        }
-                        else {
-                            throw new Exception("Tous les champs ne sont pas remplis");
-                        }
-                    }
-                }
-
-                elseif ($_GET['action'] == 'deconnexion') {     // Déconnexion
-                    session_start();
-                    session_destroy();
-                    header("Location: index.php");
-                }
             } else {  // Si aucune action particulière demandée --> affichage de l'accueil
                 $this->ctrlAccueil->accueil();
             }
@@ -233,8 +315,7 @@ class Routeur {
         catch (Exception $e) {      // S'il y a une exception --> on récupère le message
                     $this->erreur($e->getMessage());
             }             
-
-        }
+    }
     // Recherche un paramètre dans un tableau
     private function getParametre($tableau, $nom) {
         if (isset($tableau[$nom])) {

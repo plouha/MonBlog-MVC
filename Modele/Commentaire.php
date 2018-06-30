@@ -42,12 +42,15 @@ class Commentaire extends Modele {
 
     // Méthode qui récupère un commentaire
 
-    public function getCommentaire($idCom) {
+    public function getCommentaire($idCom) {                      
         $sql = 'select COM_ID as id, val as val, COM_CONTENU as contenu'
             . ' from T_COMMENTAIRE where COM_ID=?';
         $commentaire = $this->executerRequete($sql, array($idCom));
+
         if ($commentaire->rowCount() == 1) {            // on s'assure qu'il n'y a qu'un résultat récupéré
+
             return $commentaire->fetch();               // Si c'est le cas, on l'affiche
+
         }
         else {
                 throw new Exception("Aucun commentaire ne correspond à l'identifiant '$idCom'");
@@ -55,11 +58,11 @@ class Commentaire extends Modele {
         }
 
     //Méthode qui réalise la modification de la base de données
-    public function moder($idCom, $var, $contenu){
+    public function moder($idCom, $val, $contenu){
 
         $sql = "UPDATE T_COMMENTAIRE SET val= ?, COM_CONTENU= ?  WHERE COM_ID=$idCom";
 
-        $this->executerRequete($sql, array($var, $contenu));
+        $this->executerRequete($sql, array($val, $contenu));
         header("Location: index.php?action=Admin");
     }
 

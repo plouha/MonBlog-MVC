@@ -61,7 +61,7 @@
             <a>Pour écrire un commentaire, il faut :</a><br>
             <p></p>
             <a class="btn btn-outline-primary" href="index.php?action=membre">S'inscrire</a>
-            <a class="btn btn-outline-primary" href="#">Se connecter</a>
+            <a class="btn btn-outline-primary" href="index.php?action=chercheMembre">Se connecter</a>
             <p></p>
             <a class="btn btn-outline-danger" href="index.php?action=deconnexion">Déconnexion</a>
           </div>
