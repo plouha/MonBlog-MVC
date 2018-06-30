@@ -93,6 +93,13 @@ class Routeur {
                         throw new Exception("Identifiant de billet non valide");
                     }
                 }
+
+                elseif ($_GET['action'] == 'confirmer') {
+                      $idBillet = $this->getParametre($_GET, 'id');
+                      $this->ctrlBillet->confirmer($idBillet);
+                
+                }
+          
                 elseif ($_GET['action'] == 'blog') {
                        $this->ctrlBillet->blog();
                 }

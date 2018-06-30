@@ -9,8 +9,7 @@ class Admin extends Modele {
         $sql = 'SELECT id FROM T_ADMIN WHERE pseudo= ? AND pass= ?';
         $admin = $this->executerRequete($sql, array($pseudo, $pass));
 
-        return $admin->fetch();   
-
+        return $admin->fetch();
 
     }
 

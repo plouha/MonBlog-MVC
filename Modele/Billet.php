@@ -12,7 +12,6 @@ require_once 'Modele/Modele.php';
 class Billet extends Modele {
 
     // Renvoie la liste des billets du blog
-
     public function getBillets() {
         $sql = 'select BIL_ID as id, BIL_DATE as date, BIL_AUTEUR as auteur,'
                 . ' BIL_TITRE as titre, BIL_CONTENU as contenu from T_BILLET'
@@ -22,7 +21,6 @@ class Billet extends Modele {
     }
 
     // Renvoie les informations sur un billet
-
     public function getBillet($idBillet) {
         $sql = 'select BIL_ID as id, BIL_DATE as date, BIL_AUTEUR as auteur,'
                 . ' BIL_TITRE as titre, BIL_CONTENU as contenu from T_BILLET'
@@ -34,23 +32,31 @@ class Billet extends Modele {
             throw new Exception("Aucun billet ne correspond à l'identifiant '$idBillet'");
     }    
 
-    // fonction qui realise l'insertion dans la base de données
-    
+    // fonction qui realise l'insertion dans la base de données   
     public function insertBillet($titre, $contenu){
         $sql = 'INSERT INTO T_BILLET(BIL_TITRE, BIL_CONTENU) VALUES(?, ?)';
         $this->executerRequete($sql, array($titre, $contenu));
     }
 
     // fonction qui realise la modification dans la base de données
-    public function modifBillet($idBillet, $titre, $contenu){         //, $date
-//        $sql = 'UPDATE T_BILLET SET BIL_TITRE =?, BIL_CONTENU=?, BIL_DATE=NOW()WHERE id=?';
-//              var_dump($idBillet);
+    public function modifBillet($idBillet, $titre, $contenu){    
 
         $sql = "UPDATE T_BILLET SET BIL_TITRE = ?, BIL_CONTENU = ? WHERE BIL_ID=$idBillet";
 
         $resultat = $this->executerRequete($sql, array($titre, $contenu));
         print_r($resultat);
         header("Location: index.php");
+    }
+    
+    //fonction qui realise la suppression dans la base de données
+    public function confirmer($idBillet) {
+
+        $sql = "DELETE FROM T_COMMENTAIRE WHERE BIL_ID= $idBillet";
+        $this->executerRequete($sql, array($idBillet));        
+
+        $sql = "DELETE FROM T_BILLET WHERE BIL_ID= $idBillet";
+        $this->executerRequete($sql, array($idBillet));
+        header("Location: index.php?action=Admin");
     }
 
     //Méthode qui recupere tous les billets

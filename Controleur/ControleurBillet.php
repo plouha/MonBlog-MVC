@@ -52,7 +52,24 @@ class ControleurBillet {
 
     }
 
-       // Affiche la liste de tous les billets du blog
+    //affiche la page de confirmation de suppression d'un billet
+    public function vueConfirmation($idBillet) {
+        session_start();
+        $billet = $this->billet->getBillet($idBillet);
+
+        $vue = new Vue("Confirmation");
+        $vue->generer(array ('billet' => $billet));
+    }
+    
+
+    //confirme la suppression d'un billet
+    public function confirmer($idBillet) {
+
+        $this->billet->confirmer($idBillet); 
+        $this->blog();
+    }
+    
+    // Affiche la liste de tous les billets du blog
     public function blog() {
         session_start();
         $blog = $this->billet->getBlog();

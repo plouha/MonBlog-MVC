@@ -23,8 +23,8 @@ class ControleurAdmin {
     public function gestionAdmin($pseudo, $pass){
       
       
-      $pseudo = strip_tags($pseudo);
-      $pass = strip_tags($pass);
+      $pseudo = htmlspecialchars($pseudo);
+      $pass = htmlspecialchars($pass);
       
       $admin = $this->admin->getAdmin($pseudo, $pass);
 
@@ -32,6 +32,7 @@ class ControleurAdmin {
       {
           //on indique que tout les champs ne sont pas remplis ou une erreur
           $insert_erreur = true;
+
       }
       else
       {
