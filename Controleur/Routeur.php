@@ -34,8 +34,8 @@ class Routeur {
                         $this->ctrlBillet->billet($idBillet);
                     } else
                         throw new Exception("Identifiant de billet non valide");
-                } else if ($_GET['action'] == 'commenter') {
-
+                } 
+                else if ($_GET['action'] == 'commenter') {
                     if (!empty($_POST['auteur']) && !empty($_POST['contenu'])) {
                         $auteur = $this->getParametre($_POST, 'auteur');
                         $contenu = $this->getParametre($_POST, 'contenu');
@@ -56,6 +56,43 @@ class Routeur {
                         }                
                 }
 
+                elseif ($_GET['action'] == 'modifierBillet') {
+                       $idBillet = intval($this->getParametre($_GET, 'id'));
+                       if ($idBillet != 0) {
+                    $this->ctrlBillet->vue($idBillet);
+                    }
+                    
+                    else {
+                       throw new Exception("Identifiant de billet non valide");
+                     }
+                }
+
+                elseif ($_GET['action'] == 'enregistrerModif') {
+                        $idBillet = intval($this->getParametre($_GET, 'id')); 
+                        if ($idBillet != 0) {
+                            if(!empty($_POST['titre']) && !empty($_POST['contenu'])){
+
+                            $titre = $this->getParametre($_POST, 'titre');
+                            $contenu = $this->getParametre($_POST, 'contenu');
+                        $this->ctrlBillet->modifierBillet($idBillet, $titre, $contenu);                
+                      
+                        }
+                    }
+                    else{
+                        throw new Exception("Tous les champs ne sont pas remplis !");
+                    }
+                }
+
+                elseif ($_GET['action'] == 'supprimerBillet') {
+                    $idBillet = intval($this->getParametre($_GET, 'id'));
+                    if ($idBillet != 0) {
+                        $this->ctrlBillet->vueConfirmation($idBillet);
+                    }
+            
+                    else {
+                        throw new Exception("Identifiant de billet non valide");
+                    }
+                }
                 elseif ($_GET['action'] == 'blog') {
                        $this->ctrlBillet->blog();
                 }
@@ -92,6 +129,7 @@ class Routeur {
         $vue = new Vue("Erreur");
         $vue->generer(array('msgErreur' => $msgErreur));
     }
+
 
     // Recherche un paramètre dans un tableau
     private function getParametre($tableau, $nom) {

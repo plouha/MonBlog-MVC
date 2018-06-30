@@ -23,7 +23,7 @@
 
     <main role="main" class="container">
       <div class="row" id=gauche >
-        <div class="col-md-8 blog-main" >
+        <div class="col-md-9 blog-main" >
           <h3 class="pb-3 mb-4 font-italic border-bottom">
             Articles
           </h3>
@@ -37,7 +37,7 @@
         </div><!--  fin du blog-main -->
 
         <!--  partie se trouvant sur le côté -->
-        <aside class="col-md-4 blog-sidebar">
+        <aside class="col-md-3 blog-sidebar">
           <div class="p-3 mb-3 bg-light rounded">
             <h4 class="font-italic">Auteur du blog</h4>
             <img src="images/BG2.png" alt="responsive">

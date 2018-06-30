@@ -22,22 +22,24 @@ include_once 'head.php';
 <div class="container" >
 	<table class="table table-striped table-bordered">
 		<tr>
-		<th>id</th><th>Titre</th><th>Auteur</th><th>Date</th><th></th><th></th>
+		<th>id</th><th>Titre</th><th>Contenu</th><th></th><th></th>
 		</tr>
-	  <?php   	
+	  <?php
+
 	  foreach ($blog as $billet){
+
 	  	?>
 
 		<tr>	
-		<td><?= $billet['id']; ?></td><td><?= $billet['titre']; ?></td><td><?= $billet['auteur']; ?></td><td><?= $billet['date']; ?></td><td><button type="button" class="btn btn-warning btn-sm" ><a href="<?= "index.php?action=modifierBillet&id=" . $billet['id'] ?>">Modifier</a></button></td><td><button type="button" class="btn btn-danger btn-sm" ><a href="<?= "index.php?action=supprimerBillet&id=" . $billet['id'] ?>">Supprimer</a></button></td>
+		<td><?= $billet['id']; ?></td><td><?= $billet['titre']; ?></td><td><?= $billet['contenu']; ?></td><td><button type="button" class="btn btn-outline-warning btn-sm" ><a href="<?= "index.php?action=modifierBillet&id=" . $billet['id'] ?>">Modifier</a></button></td><td><button type="button" class="btn btn-outline-danger btn-sm" ><a href="<?= "index.php?action=supprimerBillet&id=" . $billet['id'] ?>">Supprimer</a></button></td>
 		</tr>
 	  <?php }  ?>
  
 	</table>
-	<br/>
-	<br/>
-	<a class="btn btn-outline-warning" href="index.php?action=Admin">Retour</a>
 
+	<a class="btn btn-outline-warning" href="index.php?action=Admin">Retour</a>
+	<br/>
+	<br/>
 </div>
   <?php }  ?> 
 

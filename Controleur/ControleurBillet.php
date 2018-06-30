@@ -35,11 +35,21 @@ class ControleurBillet {
         // Actualisation de l'affichage du billet
         $this->billet($idBillet);
     }
-      //ajoute un billet
+    //ajoute un billet
     public function ecrireBillet($titre, $contenu) {
   
         $this->billet->insertBillet($titre, $contenu);
         header("location: index.php?action=Admin");
+    }
+
+    //modifie un billet
+    public function modifierBillet($idBillet, $titre, $contenu) { 
+        session_start();
+
+        $this->billet->modifBillet($idBillet, $titre, $contenu); 
+
+        $this->billet($idBillet);
+
     }
 
        // Affiche la liste de tous les billets du blog
@@ -58,7 +68,7 @@ class ControleurBillet {
     }    
     else {
     $billet = $this->billet->getBillet($params);
-    $vue = new Vue("FormulaireBillet");
+    $vue = new Vue("ModifierBillet");
     $vue->generer(array('billet' => $billet));
     }
   }
