@@ -40,11 +40,9 @@ class Vue {
             // Démarrage de la temporisation de sortie (on transmet à une variable les éléments récupérés)
             ob_start();
             // Inclut le fichier vue
-            // Son résultat est placé dans le tampon de sortie
-
+            // le résultat est placé dans le tampon de sortie
             require $fichier;
             // Arrêt de la temporisation et renvoi du tampon de sortie
-
             return ob_get_clean();
         }
         else {

@@ -72,6 +72,5 @@ class Commentaire extends Modele {
         $sql = "DELETE FROM T_COMMENTAIRE WHERE COM_ID=$idCom";
         $this->executerRequete($sql, array($idCom));        
 
-//        header("Location: index.php?action=blog2");
     }
 }

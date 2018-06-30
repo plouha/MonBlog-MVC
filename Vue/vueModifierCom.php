@@ -43,7 +43,9 @@ include_once 'head.php';
                             <br/>
                             <label for="contenu"><strong>Contenu : </strong>
                                 <br/>
+
                             </label>
+                            <br/>
                                 <textarea name="contenu" id="contenu" type="text" rows="5" cols="80"><?php if(isset($commentaire['id']) AND $commentaire['id']) :?> <?= nl2br(htmlspecialchars($commentaire['contenu']));?><?php endif;?></textarea></label></p>
                             <br/>
 

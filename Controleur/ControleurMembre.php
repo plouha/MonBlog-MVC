@@ -14,7 +14,6 @@ class ControleurMembre
     private $pseudo;
     private $mail;
     private $pass;
-//    private $compte;
 
 
     public function __construct()
@@ -43,7 +42,7 @@ class ControleurMembre
         $vue->generer(array (null));
     }
 
-    //erreur de Password
+    //erreur de Membre
     public function erreurMembre() {
 
         $vue = new Vue("erreurMembre");
@@ -88,7 +87,7 @@ class ControleurMembre
         $vue->generer(array ('membre' => $membre));
     }
 
-    //confirme la suppression d'un compte
+    //confirme la suppression d'un membre
     public function confirmer3($idCompte) {
         session_start();
 

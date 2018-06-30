@@ -29,7 +29,7 @@ class Routeur {
     public function __construct() {                             // constructeur
         $this->ctrlAccueil = new ControleurAccueil();           // création d'une instance de ControleurAccueil
         $this->ctrlBillet = new ControleurBillet();             // création d'une instance de ControleurBillet
-        $this->ctrlCommentaire = new ControleurCommentaire();   // création d'une instance de ControleurAdmin
+        $this->ctrlCommentaire = new ControleurCommentaire();   // création d'une instance de ControleurCommentaire
         $this->ctrlAdmin = new ControleurAdmin();               // création d'une instance de ControleurAdmin
         $this->ctrlMail = new ControleurMail();                 // création d'une instance de ControleurMail
         $this->ctrlMembre = new ControleurMembre();             // création d'une instance de ControleurMembre
@@ -250,7 +250,7 @@ class Routeur {
 
                 }
 
-                elseif ($_GET['action'] == 'confirmer3') {           // Confirme la suppression d'un compte
+                elseif ($_GET['action'] == 'confirmer3') {           // Confirme la suppression d'un membre
 
                     $idCompte = $this->getParametre($_GET, 'id');
 

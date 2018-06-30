@@ -58,7 +58,7 @@ class ControleurMail {
         header("location: index.php?action=confirmeMail");
     }
 
-    //affiche la page de confirmation de suppression d'un article
+    //affiche la page de confirmation de l'envoi d'un mail
     public function vueConfirmeMail() {
 
         $vue = new Vue("ConfirmeMail");

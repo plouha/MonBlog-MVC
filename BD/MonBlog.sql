@@ -1,4 +1,14 @@
-/* Script SQL de création des tables de la base de données */
+-- phpMyAdmin SQL Dump
+-- version 4.7.7
+-- https://www.phpmyadmin.net/
+--
+-- Hôte : 127.0.0.1:8889
+-- Généré le :  ven. 29 juin 2018 à 19:55
+-- Version du serveur :  5.6.38
+-- Version de PHP :  7.2.1
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
 
 --
 -- Base de données :  `monblog`
@@ -6,8 +16,6 @@
 
 -- --------------------------------------------------------
 
-drop table if exists T_COMMENTAIRE;
-drop table if exists T_BILLET;
 --
 -- Structure de la table `T_ADMIN`
 --
@@ -23,13 +31,21 @@ CREATE TABLE `T_ADMIN` (
 --
 
 INSERT INTO `T_ADMIN` (`id`, `pseudo`, `pass`) VALUES
-  (1, 'admin', 'admin');
+(1, 'admin', '$2y$10$rrwYnL4OKflk54NYvSD5Ou51Tmce3yqRM5hShufaonWn53nZiV2O.');
+
+--
+-- Index pour les tables déchargées
+--
 
 --
 -- Index pour la table `T_ADMIN`
 --
 ALTER TABLE `T_ADMIN`
   ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT pour les tables déchargées
+--
 
 --
 -- AUTO_INCREMENT pour la table `T_ADMIN`

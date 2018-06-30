@@ -35,11 +35,11 @@ class Membre extends Modele {
         $sql = 'insert into T_MEMBRE (pseudo, mail, pass, date) values(?, ?, ?, ?)';
         $date = date(DATE_W3C);  // Récupère la date courante
 
-        $membre = $this->executerRequete($sql, array($pseudo, $mail, $pass, $date));        // avec mot de passe crypté
+        $this->executerRequete($sql, array($pseudo, $mail, $pass, $date));        // avec mot de passe crypté
 
         }
     }
-
+//$membre =
     //recupere un compte membre
     public function getAdminMembre($pseudo, $pass)
     {
@@ -67,10 +67,7 @@ class Membre extends Modele {
         }
     }
 
-
-
-
-
+    //Méthode qui récupère un membre dans la base de données
     public function getMembre($idCompte) {
 
         $sql = 'select id as id, pseudo as pseudo, pass as pass, mail as mail'

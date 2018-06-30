@@ -34,11 +34,11 @@ include_once 'head.php';
                                 <label for="contenu"><strong>Contenu : </strong>
                                 <textarea name="contenu" id="contenu" rows="20" cols="80" required></textarea></label>
                                 <br/>
-                                <button type="submit" class="btn btn-outline-primary">Enregistrer</button>
+                                <button type="submit" class="btn btn-outline-primary">Enregistrer</button> <a class="btn btn-outline-warning" href="index.php?action=Admin">Retour</a>
                                 <br/>
                                 <br/>
                             </div>    
-                                <a class="btn btn-outline-warning" href="index.php?action=Admin">Retour</a>
+
                         </form>                    
                     </div>
                 </div>

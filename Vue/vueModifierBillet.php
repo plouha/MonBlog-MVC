@@ -45,13 +45,9 @@ include_once 'head.php';
                             <br/>
                             </label>
                             
-                            <button type="submit" class="btn btn-outline-primary" ">Modifier</button>   
+                            <button type="submit" class="btn btn-outline-primary" ">Modifier</button>   <a class="btn btn-outline-warning" href="index.php?action=Admin">Retour</a>
                                 <br/>
                                 <br/>
-                            <a class="btn btn-outline-warning" href="index.php?action=Admin">Retour</a>
-                                <br/>
-                                <br/>
-                            
                         </div>
                     </form>               
                 </div>
