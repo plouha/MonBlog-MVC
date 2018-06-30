@@ -34,7 +34,14 @@ class ControleurMembre
     public function enregistrerMembre($pseudo, $mail, $pass) {
 
         $this->membre->insertMembre($pseudo, $mail, $pass);
-        header("location: index.php?action=gestionMembre");
+        header("location: index.php?action=confirmeMembre");
+    }
+
+         //affiche la page de confirmation d'inscription d'un membre
+    public function vueConfirmeMembre() {
+
+        $vue = new Vue("ConfirmeMembre");
+        $vue->generer(array (null));
     }
 
     //connexion a l'administration d'un membre

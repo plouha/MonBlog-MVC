@@ -143,7 +143,21 @@ class Routeur {
                 }
 
                 elseif ($_GET['action'] == 'enregistrerMembre') {       // Récupère les informations d'un membre
-                        $this->ctrlMembre->enregistrerMembre($nom, $mail, $pseudo);
+
+                    if (!empty($_POST['pseudo']) && !empty($_POST['mail']) && !empty($_POST['pass'])) {
+                        $pseudo = $this->getParametre($_POST, 'pseudo');
+                        $mail = $this->getParametre($_POST, 'mail');
+                        $pass = $this->getParametre($_POST, 'pass');
+
+                        $this->ctrlMembre->enregistrerMembre($pseudo, $mail, $pass);
+                    }
+                    else {
+                            throw new Exception("Tous les champs ne sont pas remplis");
+                    }
+                }
+
+                elseif ($_GET['action'] == 'confirmeMembre') {       // Confirme l'inscription d'un membre
+                        $this->ctrlMembre->vueConfirmeMembre();
                 }
 
                 elseif ($_GET['action'] == 'ecrireMail') {              // Afficher formulaire de rédaction d'un mail
@@ -159,6 +173,9 @@ class Routeur {
                         $message = $this->getParametre($_POST, 'message');
                         $this->ctrlMail->enregistrerMail($nom, $prenom, $email, $sujet, $message);
                         $this->ctrlMail->sendMail($email, $sujet, $message);
+                    }
+                    else {
+                            throw new Exception("Tous les champs ne sont pas remplis");
                     }
 
                 }

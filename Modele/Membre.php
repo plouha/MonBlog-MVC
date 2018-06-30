@@ -14,9 +14,11 @@ class Membre extends Modele
 
     // Ajoute un membre dans la base
 
-    public function enregistrerMembre($pseudo, $mail, $pass) {
-        $sql = 'insert into T_MEMBRE (pseudo, mail, pass) values(?, ?, ?)';
-        $this->executerRequete($sql, array($pseudo, $mail, $pass));
+    public function insertMembre($pseudo, $mail, $pass)
+    {
+        $sql = 'insert into T_MEMBRE (pseudo, mail, pass, date) values(?, ?, ?, ?)';
+        $date = date(DATE_W3C);  // Récupère la date courante
+        $this->executerRequete($sql, array($pseudo, $mail, $pass, $date));
     }
 
 }

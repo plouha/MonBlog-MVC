@@ -16,7 +16,7 @@ include_once 'head.php';
         </div>
 
     <div class="container">             <!-- Formulaire de mail -->
-        <form id="contact-form" method="post" action="index.php?action=sendMail" role="form">
+        <form id="contact-form" method="post" action="index.php?action=sendMail">
 
         <div class="messages"></div>
             <div class="controls">
@@ -66,7 +66,7 @@ include_once 'head.php';
                         </div>
                     </div>
                     <div class="col-md-12">
-                        <input type="submit" class="btn btn-success btn-send" value="Envoyer" >
+                        <input type="submit" class="btn btn-primary btn-send" value="Envoyer" >
                     </div>
                 </div>
                 <div class="row">

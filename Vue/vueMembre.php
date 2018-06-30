@@ -26,21 +26,21 @@ include_once 'head.php';
                   
                 <?php  endif; ?>
 
-                <form action="./index.php?action=enregistrerMembre" method="post">
+                <form id="contact-form" method="post" role="form" action="index.php?action=enregistrerMembre">
                   <div class="form-group">
                     <label for="pseudo"><strong>Entrez votre pseudo : *</strong></label>
-                    <input type="text" class="form-control" name="pseudo" id="pseudo"  placeholder="Votre pseudo" required>
+                    <input type="text" name="pseudo" id="pseudo"  class="form-control" placeholder="Votre pseudo" value="<?php if(isset($pseudo)) echo $pseudo;?>" required>
                   </div>
                   <div class="form-group">
-                    <label for="pseudo"><strong>Entrez votre email : *</strong></label>
-                    <input type="email" class="form-control" name="email" id="email"  placeholder="Votre email" required>
+                    <label for="mail"><strong>Entrez votre email : *</strong></label>
+                    <input type="email" name="mail" id="mail"  class="form-control" placeholder="Votre email" value="<?php if(isset($mail)) echo $mail;?>" required>
                   </div>
                   <div class="form-group">
-                    <label for="exampleInputPassword1"><strong>Entrez votre password : *</strong></label>
-                    <input name="pass" id="pass" type=password class="form-control"  placeholder="Votre password" required>
+                    <label for="pass"><strong>Entrez votre password : *</strong></label>
+                    <input type="password" name="pass" id="pass" class="form-control"  placeholder="Votre password" value="" required>
                   </div>
                   </br>
-                  <button type="button" class="btn btn-outline-primary">S'inscrire</button>
+                  <button type="submit" class="btn btn-outline-primary" >Envoyer</button>
                   <p class="text-muted" ><strong style="color: red">* Ces champs sont obligatoires.</strong> </p>
                 </form>
             </div>
