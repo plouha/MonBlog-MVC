@@ -24,11 +24,14 @@ session_start();
     </h2><br/>
 
 </header>
-<?php foreach ($commentaires as $commentaire){ ?>
+    <?php foreach ($commentaires as $commentaire){ 
+    ?>
+    
     <h5><strong><em><?= $commentaire['auteur'] ?></em></strong></h5><?= date_format(date_create($commentaire['date']), "d-m-Y - H:i") ?>
     <br/>
     <p><?= $commentaire['contenu'] ?></p>
-<?php } ?>
+    <?php 
+    } ?>
 </br>
 
 <?php
@@ -39,7 +42,11 @@ if (isset($_SESSION['id']) AND isset($_SESSION['pseudo']))
 <hr />
     <h3 class="pb-3 mb-4 font-italic border-bottom">
         <strong>Ajouter un commentaire</strong>
-    </h3><br/>
+    </h3>
+    <h6 class="pb-3 mb-4 font-italic" style="color: red">
+        Votre commentaire apparaîtra après validation. Merci de votre compréhension.
+    </h6>
+
 <form method="post" action="index.php?action=commenter">
     <h5><em>Pseudo</em></h5>
     <input id="auteur" name="auteur" type="text" placeholder="Votre pseudo" required />

@@ -22,7 +22,7 @@ include_once 'head.php';
 <div class="container" >
 	<table class="table table-striped table-bordered">
 		<tr>
-		<th>id</th><th>Date</th><th>Auteur</th><th>Contenu</th><th></th><th></th>
+		<th>id</th><th>Val</th><th>Date</th><th>Auteur</th><th>Contenu</th><th></th><th></th>
 		</tr>
 	  <?php
 
@@ -31,7 +31,7 @@ include_once 'head.php';
 	  	?>
 
 		<tr>	
-		<td><?= $comment['id']; ?></td><td><?= $comment['date']; ?></td><td><?= $comment['auteur']; ?></td><td><?= $comment['contenu']; ?></td><td><button type="button" class="btn btn-outline-warning btn-sm" ><a href="<?= "index.php?action=modifierBillet&id=" . $comment['id'] ?>">Modifier</a></button></td><td><button type="button" class="btn btn-outline-danger btn-sm" ><a href="<?= "index.php?action=supprimerBillet&id=" . $comment['id'] ?>">Supprimer</a></button></td>
+		<td><?= $comment['id']; ?></td><td><?= $comment['val']; ?></td><td><?= date_format(date_create($comment['date']), "d-m-Y - H:i"); ?></td><td><?= $comment['auteur']; ?></td><td><?= $comment['contenu']; ?></td><td><button type="button" class="btn btn-outline-warning btn-sm" ><a href="<?= "index.php?action=modifierBillet&id=" . $comment['id'] ?>">Modifier</a></button></td><td><button type="button" class="btn btn-outline-danger btn-sm" ><a href="<?= "index.php?action=supprimerBillet&id=" . $comment['id'] ?>">Supprimer</a></button></td>
 		</tr>
 	  <?php }  ?>
  

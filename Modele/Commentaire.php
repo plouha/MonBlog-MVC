@@ -15,7 +15,7 @@ class Commentaire extends Modele {
     public function getCommentaires($idBillet) {
         $sql = 'select COM_ID as id, COM_DATE as date,'
                 . ' COM_AUTEUR as auteur, COM_CONTENU as contenu from T_COMMENTAIRE'
-                . ' where BIL_ID=?';
+                . ' where val="v" AND BIL_ID=?';
         $commentaires = $this->executerRequete($sql, array($idBillet));
         return $commentaires;
     }
@@ -32,7 +32,7 @@ class Commentaire extends Modele {
 
     //Méthode qui recupere tous les commentaires
     public function getBlog2(){
-        $sql = 'select COM_ID as id, COM_DATE as date, COM_AUTEUR as auteur, COM_CONTENU as contenu'
+        $sql = 'select COM_ID as id, COM_DATE as date, COM_AUTEUR as auteur, COM_CONTENU as contenu, val as val'
                 . '  from T_COMMENTAIRE order by id desc';
                 
         $comments = $this->executerRequete($sql);
