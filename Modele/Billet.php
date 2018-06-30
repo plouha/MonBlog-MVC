@@ -43,8 +43,7 @@ class Billet extends Modele {
 
         $sql = "UPDATE T_BILLET SET BIL_TITRE = ?, BIL_CONTENU = ? WHERE BIL_ID=$idBillet";
 
-        $resultat = $this->executerRequete($sql, array($titre, $contenu));
-        print_r($resultat);
+        $this->executerRequete($sql, array($titre, $contenu));
         header("Location: index.php");
     }
     

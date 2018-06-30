@@ -1,7 +1,41 @@
 /* Script SQL de création des tables de la base de données */
 
+--
+-- Base de données :  `monblog`
+--
+
+-- --------------------------------------------------------
+
 drop table if exists T_COMMENTAIRE;
 drop table if exists T_BILLET;
+--
+-- Structure de la table `T_ADMIN`
+--
+
+CREATE TABLE `T_ADMIN` (
+  `id` int(2) NOT NULL,
+  `pseudo` varchar(10) NOT NULL,
+  `pass` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `T_ADMIN`
+--
+
+INSERT INTO `T_ADMIN` (`id`, `pseudo`, `pass`) VALUES
+  (1, 'admin', 'admin');
+
+--
+-- Index pour la table `T_ADMIN`
+--
+ALTER TABLE `T_ADMIN`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT pour la table `T_ADMIN`
+--
+ALTER TABLE `T_ADMIN`
+  MODIFY `id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 create table T_BILLET (
   BIL_ID integer primary key auto_increment,
