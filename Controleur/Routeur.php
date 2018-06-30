@@ -9,6 +9,8 @@ require_once 'Controleur/ControleurAccueil.php';  // on appelle les controleurs
 require_once 'Controleur/ControleurBillet.php';
 require_once 'Controleur/ControleurCommentaire.php';
 require_once 'Controleur/ControleurAdmin.php';
+require_once 'Controleur/ControleurMail.php';
+require_once 'Controleur/ControleurMembre.php';
 require_once 'Modele/Modele.php';
 
 require_once 'Vue/Vue.php';
@@ -20,12 +22,16 @@ class Routeur {
     private $ctrlBillet;
     private $ctrlCommentaire;
     private $ctrlAdmin;
+    private $ctrlMail;
+    private $ctrlMembre;
 
     public function __construct() {                             // constructeur
         $this->ctrlAccueil = new ControleurAccueil();           // création d'une instance de ControleurAccueil
         $this->ctrlBillet = new ControleurBillet();             // création d'une instance de ControleurBillet
         $this->ctrlCommentaire = new ControleurCommentaire();   // création d'une instance de ControleurAdmin
         $this->ctrlAdmin = new ControleurAdmin();               // création d'une instance de ControleurAdmin
+        $this->ctrlMail = new ControleurMail();               // création d'une instance de ControleurMail
+        $this->ctrlMembre = new ControleurMembre();               // création d'une instance de ControleurMembre
     }
 
 
@@ -102,7 +108,7 @@ class Routeur {
                     $idBillet = $this->getParametre($_GET, 'id');
                     $this->ctrlBillet->confirmer($idBillet);
 
-                } elseif ($_GET['action'] == 'modifierCom') {              // modifier commentaire ... NOUVEAU
+                } elseif ($_GET['action'] == 'modifierCom') {              // modifier commentaire
                     $idCom = intval($this->getParametre($_GET, 'id'));
                     if ($idCom != 0) {
                         $this->ctrlCommentaire->vue($idCom);
@@ -127,26 +133,66 @@ class Routeur {
                     $idCom = intval($this->getParametre($_GET, 'id'));
                     if ($idCom != 0) {
 
-                        $this->ctrlCommentaire->vueConfirmation2($idCom);
+                        $this->ctrlCommentaire->vueConfirmation2($idCom);   // Affiche le formulaire de confirmation
                     } else {
                         throw new Exception("Identifiant de commentaire non valide");
                     }
- 
-                } elseif ($_GET['action'] == 'confirmer2') {
+                }
+                elseif ($_GET['action'] == 'membre') {              // Afficher formulaire d'inscription d'un membre
+                        $this->ctrlMembre->vueMembre();
+                }
 
+                elseif ($_GET['action'] == 'enregistrerMembre') {       // Récupère les informations d'un membre
+                        $this->ctrlMembre->enregistrerMembre($nom, $mail, $pseudo);
+                }
+
+                elseif ($_GET['action'] == 'ecrireMail') {              // Afficher formulaire de rédaction d'un mail
+                        $this->ctrlMail->vueMail();
+                }
+
+                elseif ($_GET['action'] == 'sendMail') {            // Enregistrer et envoyer les informations d'un mail
+                    if (!empty($_POST['nom']) && !empty($_POST['prenom']) && !empty($_POST['email']) && !empty($_POST['sujet']) && !empty($_POST['message'])) {
+                        $nom = $this->getParametre($_POST, 'nom');
+                        $prenom = $this->getParametre($_POST, 'prenom');
+                        $email = $this->getParametre($_POST, 'email');
+                        $sujet = $this->getParametre($_POST, 'sujet');
+                        $message = $this->getParametre($_POST, 'message');
+                        $this->ctrlMail->enregistrerMail($nom, $prenom, $email, $sujet, $message);
+                        $this->ctrlMail->sendMail($email, $sujet, $message);
+                    }
+
+                }
+
+                elseif ($_GET['action'] == 'confirmeMail') {       // Confirme l'envoi d'un mail
+                        $this->ctrlMail->vueConfirmeMail();
+                }
+
+                elseif ($_GET['action'] == 'enregistrerMail') {       // Récupère les informations d'un mail
+                    $this->ctrlMail->enregistrerMail($nom, $prenom, $email, $sujet, $message);
+                }
+
+                elseif ($_GET['action'] == 'confirmer2') {           // Confirme la suppression d'un commentaire
                     $idCom = $this->getParametre($_GET, 'id');
                     $this->ctrlCommentaire->confirmer2($idCom);
 
-                } elseif ($_GET['action'] == 'blog') {        // Affiche la liste de tous les articles
+                }
+
+                elseif ($_GET['action'] == 'blog') {                // Affiche la liste de tous les articles
                     $this->ctrlBillet->blog();
  
-                } elseif ($_GET['action'] == 'blog2') {       // Affiche la liste de tous les commentaires
+                }
+
+                elseif ($_GET['action'] == 'blog2') {               // Affiche la liste de tous les commentaires
                     $this->ctrlCommentaire->blog2();
 
-                } elseif ($_GET['action'] == 'Admin') {       // Affiche le menu administrateur
+                }
+
+                elseif ($_GET['action'] == 'Admin') {               // Affiche le menu administrateur
                     $this->ctrlAdmin->vue();
 
-                } elseif ($_GET['action'] == 'gestionAdmin') {            // Page de connexion administrateur
+                }
+
+                elseif ($_GET['action'] == 'gestionAdmin') {            // Page de connexion administrateur
                     if (isset($_POST['pseudo']) && $_POST['pass']) {
 
                         if (!empty($_POST['pseudo']) && !empty($_POST['pass'])) {
@@ -156,7 +202,9 @@ class Routeur {
                             throw new Exception("Tous les champs ne sont pas remplis");
                         }
                     }
-                } elseif ($_GET['action'] == 'deconnexion') {     // Déconnexion
+                }
+
+                elseif ($_GET['action'] == 'deconnexion') {     // Déconnexion
                     session_start();
                     session_destroy();
                     header("Location: index.php");

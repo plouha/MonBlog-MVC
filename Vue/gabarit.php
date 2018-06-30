@@ -60,7 +60,7 @@
           <p class="mb-1"><h4 class="font-italic">Exprimez-vous ...</h4></p>
             <a>Pour écrire un commentaire, il faut :</a><br>
             <p></p>
-            <a class="btn btn-outline-primary" href="#">S'inscrire</a>
+            <a class="btn btn-outline-primary" href="index.php?action=membre">S'inscrire</a>
             <a class="btn btn-outline-primary" href="#">Se connecter</a>
             <p></p>
             <a class="btn btn-outline-danger" href="index.php?action=deconnexion">Déconnexion</a>
@@ -70,7 +70,7 @@
           <p class="mb-1"><h4 class="font-italic">Contactez-nous ...</h4></p>
             <a>Vous pouvez nous faire parvenir un mail</a><br>
               <br />
-            <a class="btn btn-outline-primary" href="#">Contact</a>
+            <a class="btn btn-outline-primary" href="index.php?action=ecrireMail">Contact</a>
           </div>
         </aside><!-- / fin du blog-sidebar -->
 

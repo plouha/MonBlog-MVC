@@ -65,7 +65,7 @@ if (isset($_SESSION['id']) AND isset($_SESSION['pseudo']))
 
  }
     else {
-        echo "erreur";
+        echo " ";
     } ?>
 
 

@@ -56,11 +56,11 @@ include_once 'head.php';
                 <form action="./index.php?action=gestionAdmin" method="post">
                   <div class="form-group">
                     <label for="pseudo"><strong>Entrez votre pseudo : </strong></label>
-                    <input type="text" class="form-control" name="pseudo" id="pseudo"  placeholder="Votre pseudo">
+                    <input type="text" class="form-control" name="pseudo" id="pseudo"  placeholder="Votre pseudo" required>
                   </div>
                   <div class="form-group">
                     <label for="exampleInputPassword1"><strong>Entrez votre password</strong></label>
-                    <input name="pass" id="pass" type=password class="form-control"  placeholder="Votre password">
+                    <input name="pass" id="pass" type=password class="form-control"  placeholder="Votre password" required>
                   </div>
                   </br>
                   <button type="submit" class="btn btn-outline-primary">Se connecter</button>
