@@ -68,7 +68,7 @@ class ControleurBillet {
         $this->billet->confirmer($idBillet); 
         $this->blog();
     }
-    
+
     // Affiche la liste de tous les billets du blog
     public function blog() {
         session_start();

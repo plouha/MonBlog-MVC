@@ -7,6 +7,7 @@
 
 require_once 'Controleur/ControleurAccueil.php';  // on appelle les controleurs
 require_once 'Controleur/ControleurBillet.php';
+require_once 'Controleur/ControleurCommentaire.php';
 require_once 'Controleur/ControleurAdmin.php';
 
 require_once 'Vue/Vue.php';
@@ -16,11 +17,13 @@ class Routeur {
 
     private $ctrlAccueil;
     private $ctrlBillet;
+    private $ctrlCommentaire;
     private $ctrlAdmin;
 
     public function __construct() {     // constructeur
         $this->ctrlAccueil = new ControleurAccueil(); // création d'une instance de ControleurAccueil
         $this->ctrlBillet = new ControleurBillet();  // création d'une instance de ControleurBillet
+        $this->ctrlCommentaire = new ControleurCommentaire();// création d'une instance de ControleurAdmin
         $this->ctrlAdmin = new ControleurAdmin();// création d'une instance de ControleurAdmin
     }
 
@@ -103,6 +106,11 @@ class Routeur {
                 elseif ($_GET['action'] == 'blog') {
                        $this->ctrlBillet->blog();
                 }
+
+                elseif ($_GET['action'] == 'blog2') {
+                       $this->ctrlCommentaire->blog2();
+                }
+
                 elseif ($_GET['action'] == 'Admin') {
                     $this->ctrlAdmin->vue();
 

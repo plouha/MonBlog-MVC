@@ -30,7 +30,7 @@ include_once 'head.php';
                 </div>
                 <br/>
                 <div class="form-row">
-                    <button type="button" class="btn btn-lg btn-block btn-outline-warning"><a href="index.php?action=blog" class="alert-link">Modérer un commentaire</a></button>
+                    <button type="button" class="btn btn-lg btn-block btn-outline-warning"><a href="index.php?action=blog2" class="alert-link">Modérer un commentaire</a></button>
                 </div>
             </div>    
                 <br/>

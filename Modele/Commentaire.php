@@ -28,4 +28,14 @@ class Commentaire extends Modele {
         $date = date(DATE_W3C);  // Récupère la date courante
         $this->executerRequete($sql, array($date, $auteur, $contenu, $idBillet));
     }
+
+
+    //Méthode qui recupere tous les commentaires
+    public function getBlog2(){
+        $sql = 'select COM_ID as id, COM_DATE as date, COM_AUTEUR as auteur, COM_CONTENU as contenu'
+                . '  from T_COMMENTAIRE order by id desc';
+                
+        $comments = $this->executerRequete($sql);
+        return $comments;
+    }
 }
