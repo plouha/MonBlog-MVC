@@ -35,7 +35,7 @@ session_start();
 if (isset($_SESSION['id']) AND isset($_SESSION['pseudo']))
     {
 ?>
-<!--$form = " -->
+
 <hr />
     <h3 class="pb-3 mb-4 font-italic border-bottom">
         <strong>Ajouter un commentaire</strong>
@@ -55,38 +55,12 @@ if (isset($_SESSION['id']) AND isset($_SESSION['pseudo']))
 </br>
 
 <?php
-//echo $form;
+
  }
     else {
 
     } ?>
 
 
-
-
-
-
-
-
-
-
-
-
-<!-- mettre ici une condition php pour ne pas afficher le code ci-dessous si la personne n'est pas connectée 
-
-<hr />
-    <h3 class="pb-3 mb-4 font-italic border-bottom">
-        Ajouter un commentaire
-    </h3><br/>
-<form method="post" action="index.php?action=commenter">
-    <h5><em>Pseudo</em></h5>
-    <input id="auteur" name="auteur" type="text" placeholder="Votre pseudo" required /><br />
-    <h5><em>Commentaire</em></h5>
-    <textarea id="txtCommentaire" name="contenu" rows="8" cols="80" placeholder="Votre commentaire" required></textarea><br />
-    <input type="hidden" name="id" value="" />
-    <input class="btn btn-outline-danger" type="submit" value="Valider" />
-</form>
-</br>-->
-<?php
 
 

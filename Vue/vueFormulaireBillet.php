@@ -31,6 +31,7 @@ include_once 'head.php';
                                 <button type="submit" class="btn btn-outline-primary">Enregistrer</button>
                                 <br/>
                                 <br/>
+                                <a class="btn btn-outline-warning" href="index.php?action=Admin">Retour</a>
                             </form>
                 </div>
             </div>

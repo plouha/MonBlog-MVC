@@ -42,6 +42,14 @@ class ControleurBillet {
         header("location: index.php?action=Admin");
     }
 
+       // Affiche la liste de tous les billets du blog
+    public function blog() {
+        session_start();
+        $blog = $this->billet->getBlog();
+        $vue = new Vue("Blog");
+        $vue->generer(array('blog' => $blog));
+    }
+
     public function vue($params = null) {
     session_start();
     if ($params == null) {

@@ -24,11 +24,7 @@ include_once 'head.php';
             
                 <br/>
                 <div class="form-row">
-                    <button type="button" class="btn btn-lg btn-block btn-outline-warning"><a href="index.php?action=blog" class="alert-link">Modifier un article</a></button>
-                </div>
-                <br/>
-                <div class="form-row">
-                    <button type="button" class="btn btn-lg btn-block btn-outline-warning"><a href="index.php?action=blog" class="alert-link">Supprimer un article</a></button>
+                    <button type="button" class="btn btn-lg btn-block btn-outline-warning"><a href="index.php?action=blog" class="alert-link">Modifier ou supprimer un article</a></button>
                 </div>
                 <br/>
                 <div class="form-row">

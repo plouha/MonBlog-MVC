@@ -16,7 +16,7 @@ class Billet extends Modele {
     public function getBillets() {
         $sql = 'select BIL_ID as id, BIL_DATE as date, BIL_AUTEUR as auteur,'
                 . ' BIL_TITRE as titre, BIL_CONTENU as contenu from T_BILLET'
-                . ' order by BIL_ID desc';
+                . ' order by BIL_ID desc';      // liste des articles par id descendant
         $billets = $this->executerRequete($sql);
         return $billets;
     }
@@ -39,5 +39,14 @@ class Billet extends Modele {
     public function insertBillet($titre, $contenu){
         $sql = 'INSERT INTO T_BILLET(BIL_TITRE, BIL_CONTENU) VALUES(?, ?)';
         $this->executerRequete($sql, array($titre, $contenu));
+    }
+
+    //Méthode qui recupere tous les billets
+    public function getBlog(){
+        $sql = 'select BIL_ID as id, BIL_TITRE as titre, BIL_AUTEUR as auteur, BIL_DATE as date '
+                . '  from T_BILLET order by id desc';
+                
+        $billets = $this->executerRequete($sql);
+        return $billets;
     }
 }

@@ -55,6 +55,10 @@ class Routeur {
                         $this->ctrlBillet->ecrireBillet($titre, $contenu);
                         }                
                 }
+
+                elseif ($_GET['action'] == 'blog') {
+                       $this->ctrlBillet->blog();
+                }
                 elseif ($_GET['action'] == 'Admin') {
                     $this->ctrlAdmin->vue();
 
