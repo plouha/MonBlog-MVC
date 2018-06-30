@@ -56,7 +56,7 @@ create table T_COMMENTAIRE (
 CREATE TABLE T_MEMBRE (
   id               int(10) unsigned NOT NULL AUTO_INCREMENT,
   pseudo           varchar(32)  NOT NULL,
-  pass             char(40)     NOT NULL,
+  pass             varchar(255)     NOT NULL,
   mail             varchar(128) NOT NULL,
   date_creation    datetime NOT NULL,
   PRIMARY KEY (id),

@@ -20,10 +20,10 @@ abstract class Modele {
 
     protected function executerRequete($sql, $params = null) {
         if ($params == null) {
-            $resultat = $this->getBdd()->query($sql); // exécution directe
+            $resultat = $this->getBdd()->query($sql); // exécution directe si pas de paramètre
         }
         else {
-            $resultat = $this->getBdd()->prepare($sql);  // requête préparée
+            $resultat = $this->getBdd()->prepare($sql);  // requête préparée si paramètres (empêche les injections SQL)
             $resultat->execute($params);
         }
         return $resultat;

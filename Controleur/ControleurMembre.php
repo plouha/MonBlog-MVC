@@ -104,15 +104,8 @@ class ControleurMembre
     public function adminMembre($pseudo, $pass) {
         session_start();
         $pseudo = htmlspecialchars($pseudo);
-        $pass = htmlspecialchars($pass);
 
         $membre = $this->membre->getAdminMembre($pseudo, $pass);
-
-        if (!$membre) {
-            $vue = new Vue("erreurMembre");
-            $vue->generer(array (null));
-
-        } else {
 
             $_SESSION['id'] = $membre;
             $_SESSION['pseudo'] = $pseudo;
@@ -122,6 +115,5 @@ class ControleurMembre
 
 
         }
-    }
-
 }
+

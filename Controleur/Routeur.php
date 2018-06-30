@@ -170,6 +170,8 @@ class Routeur {
 
                     if ($_POST ['pass'] == $_POST ['verif']){
 
+                        $_POST ['pass'] = password_hash($_POST['pass'], PASSWORD_DEFAULT);
+
                         if (!empty($_POST['pseudo']) && !empty($_POST['mail']) && !empty($_POST['pass'])) {
                             $pseudo = $this->getParametre($_POST, 'pseudo');
                             $mail = $this->getParametre($_POST, 'mail');
@@ -196,6 +198,7 @@ class Routeur {
                     if (isset($_POST['pseudo']) && $_POST['pass']) {
 
                         if (!empty($_POST['pseudo']) && !empty($_POST['pass'])) {
+
                             $this->ctrlMembre->adminMembre($_POST['pseudo'], $_POST['pass']);
                         }
                         else {
@@ -217,6 +220,8 @@ class Routeur {
 
                 elseif ($_GET['action'] == 'modifMembre') {        // enregistre la mofication d'un membre
                     $idCompte = intval($this->getParametre($_GET, 'id'));
+
+                    $_POST ['pass'] = password_hash($_POST['pass'], PASSWORD_DEFAULT);
 
                     if ($idCompte != 0) {
                         if (!empty($_POST['pseudo']) && !empty($_POST['pass']) && !empty($_POST['mail'])) {

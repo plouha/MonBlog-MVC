@@ -51,7 +51,7 @@ include_once 'head.php';
                         <div class="form-group">
                             <label for="sujet"><strong>Sujet *</strong> </label>
                             <span class="error"><?php if(isset($erreursujet)) echo $erreursujet;?></span>
-                            <input id="sujet" type="sujet" name="sujet" class="form-control" placeholder="Indiquez le sujet" value="<?php if(isset($sujet)) echo htmlspecialchars($sujet);?>" required>
+                            <input id="sujet" type="text" name="sujet" class="form-control" placeholder="Indiquez le sujet" value="<?php if(isset($sujet)) echo htmlspecialchars($sujet);?>" required>
                             <div class="help-block with-errors"></div>
                         </div>
                     </div>

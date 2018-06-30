@@ -50,7 +50,7 @@ include_once 'head.php';
                             <div class="form-group">
                             <label for="pass"><strong>Mot de passe : </strong></label>
                             <br/>
-                                <input class="form-control" name="pass" id="pass" type="text" <?php if(isset($membre['id']) AND $membre['id']) ?>value="<?= nl2br(htmlspecialchars($membre['pass']));?>" required>
+                                <input class="form-control" name="pass" id="pass" type="text" <?php if(isset($membre['id']) AND $membre['id']) ?>value="" Placeholder="Entrez votre nouveau mot de passe ..."required>
                             </div>
                             <br/>
                             <div class="form-group">

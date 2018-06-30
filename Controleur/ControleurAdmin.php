@@ -35,8 +35,8 @@ class ControleurAdmin {
 
       if (!$admin)
       {
-          //on indique que si tout les champs ne sont pas remplis ou une erreur
-          $insert_erreur = true;
+          //on redirige vers la page d'erreur de l'Aministrateur
+          header("location: index.php?action=ErreurAdmin");
 
       }
       else
