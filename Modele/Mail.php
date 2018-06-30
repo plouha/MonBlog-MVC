@@ -3,7 +3,6 @@
  * Created by PhpStorm.
  * User: Bernard Germain
  * Date: 16/06/2018
- * Time: 11:55
  */
 
 require_once 'Modele/Modele.php';

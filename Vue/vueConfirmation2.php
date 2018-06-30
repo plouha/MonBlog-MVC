@@ -1,5 +1,11 @@
 <?php
 
+/**
+ * Created by PhpStorm.
+ * User: Bernard Germain
+ * Date: 09/06/2018
+ */
+
 include_once 'head.php';
 ?>
             

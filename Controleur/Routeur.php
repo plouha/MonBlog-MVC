@@ -167,14 +167,20 @@ class Routeur {
                 }
 
                 elseif ($_GET['action'] == 'enregistrerMembre') {       // Récupère les informations d'un membre
-                    
-                    if (!empty($_POST['pseudo']) && !empty($_POST['mail']) && !empty($_POST['pass'])) {
-                        $pseudo = $this->getParametre($_POST, 'pseudo');
-                        $mail = $this->getParametre($_POST, 'mail');
-                        $pass = $this->getParametre($_POST, 'pass');
-                    
-                        $this->ctrlMembre->enregistrerMembre($pseudo, $mail, $pass);
-                    }    
+
+                    if ($_POST ['pass'] == $_POST ['verif']){
+
+                        if (!empty($_POST['pseudo']) && !empty($_POST['mail']) && !empty($_POST['pass'])) {
+                            $pseudo = $this->getParametre($_POST, 'pseudo');
+                            $mail = $this->getParametre($_POST, 'mail');
+                            $pass = $this->getParametre($_POST, 'pass');
+
+                            $this->ctrlMembre->enregistrerMembre($pseudo, $mail, $pass);
+                        }
+                    }else
+                        {
+                            $this->ctrlMembre->erreurPwd();
+                    }
                 }
 
                 elseif ($_GET['action'] == 'confirmeMembre') {       // Confirme l'inscription d'un membre
@@ -193,7 +199,7 @@ class Routeur {
                             $this->ctrlMembre->adminMembre($_POST['pseudo'], $_POST['pass']);
                         }
                         else {
-                            throw new Exception("Membre inconnu ... connexion impossible !");
+                            $this->ctrlMembre->erreurMembre();
                         }
                     }
                 }

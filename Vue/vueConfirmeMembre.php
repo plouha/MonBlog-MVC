@@ -1,4 +1,10 @@
 <?php
+
+/**
+ * Created by PhpStorm.
+ * User: Bernard Germain
+ * Date: 16/06/2018
+ */
 include_once 'head.php';
 ?>
 <main role="main" class="container">

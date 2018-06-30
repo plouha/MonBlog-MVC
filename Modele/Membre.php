@@ -3,7 +3,6 @@
  * Created by PhpStorm.
  * User: Bernard Germain
  * Date: 17/06/2018
- * Time: 15:52
  */
 
 require_once 'Modele/Modele.php';
@@ -35,9 +34,6 @@ class Membre extends Modele
         return $membre->fetch();
 
     	}
-    else {
-                throw new Exception("Aucun membre ne correspond à votre demande");
-            }
     }
 
 

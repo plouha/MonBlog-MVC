@@ -25,7 +25,7 @@ include_once 'head.php';
                         <div class="form-group">
                             <label for="form_name"><strong>Nom *</strong></label>
                             <span class="error"><?php if(isset($erreurnom)) echo $erreurnom;?></span>
-                            <input id="form_name" type="text" name="nom" class="form-control" placeholder="Votre nom" data-error="Vous devez indiquer votre nom." value="<?php if(isset($nom)) echo $nom;?>" required>
+                            <input id="form_name" type="text" name="nom" class="form-control" placeholder="Votre nom" data-error="Vous devez indiquer votre nom." value="<?php if(isset($nom)) echo htmlspecialchars($nom);?>" required>
                         <div class="help-block with-errors"></div>
                     </div>
                 </div>
@@ -33,7 +33,7 @@ include_once 'head.php';
                     <div class="form-group">
                         <label for="form_lastname"><strong>Prénom *</strong></label>
                         <span class="error"><?php if(isset($erreurprenom)) echo $erreurprenom;?></span>
-                        <input id="form_lastname" type="text" name="prenom" class="form-control" placeholder="Votre prénom" data-error="Vous devez indiquer votre prénom." value="<?php if(isset($prenom)) echo $prenom;?>" required>
+                        <input id="form_lastname" type="text" name="prenom" class="form-control" placeholder="Votre prénom" data-error="Vous devez indiquer votre prénom." value="<?php if(isset($prenom)) echo htmlspecialchars($prenom);?>" required>
                         <div class="help-block with-errors"></div>
                     </div>
                 </div>
@@ -43,7 +43,7 @@ include_once 'head.php';
                         <div class="form-group">
                             <label for="form_email"><strong>Email *</strong></label>
                             <span class="error"><?php if(isset($erreuremail)) echo $erreuremail;?></span>
-                            <input id="form_email" type="email" name="email" class="form-control" placeholder="Votre email" data-error="Vous devez indiquer un e-mail valide." value="<?php if(isset($email)) echo $email;?>" required>
+                            <input id="form_email" type="email" name="email" class="form-control" placeholder="Votre email" data-error="Vous devez indiquer un e-mail valide." value="<?php if(isset($email)) echo htmlspecialchars($email);?>" required>
                             <div class="help-block with-errors"></div>
                         </div>
                     </div>
@@ -51,7 +51,7 @@ include_once 'head.php';
                         <div class="form-group">
                             <label for="sujet"><strong>Sujet *</strong> </label>
                             <span class="error"><?php if(isset($erreursujet)) echo $erreursujet;?></span>
-                            <input id="sujet" type="sujet" name="sujet" class="form-control" placeholder="Indiquez le sujet" value="<?php if(isset($sujet)) echo $sujet;?>" required>
+                            <input id="sujet" type="sujet" name="sujet" class="form-control" placeholder="Indiquez le sujet" value="<?php if(isset($sujet)) echo htmlspecialchars($sujet);?>" required>
                             <div class="help-block with-errors"></div>
                         </div>
                     </div>
@@ -61,7 +61,7 @@ include_once 'head.php';
                         <div class="form-group">
                             <label for="form_message"><strong>Message *</strong> </label>
                             <span class="error" ><?php if(isset($erreurmessage)) echo $erreurmessage;?></span>
-                            <textarea id="form_message" name="message" class="form-control" placeholder="Votre message " rows="4" data-error="Vous devez écrire un message."><?php if(isset($message)) echo $message;?></textarea>
+                            <textarea id="form_message" name="message" class="form-control" placeholder="Votre message " rows="4" data-error="Vous devez écrire un message."><?php if(isset($message)) echo htmlspecialchars($message);?></textarea>
                             <div class="help-block with-errors"></div>
                         </div>
                     </div>

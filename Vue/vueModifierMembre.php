@@ -1,5 +1,9 @@
 <?php
- 
+/**
+ * Created by PhpStorm.
+ * User: Bernard Germain
+ * Date: 16/06/2018
+ */
 include_once 'head.php';
 
 ?>
@@ -39,20 +43,20 @@ include_once 'head.php';
                             <div class="form-group">                                
                             <label for="pseudo"><strong>Pseudo : </strong></label>
                             <br/>
-                                <input class="form-control" name="pseudo" id="pseudo" type="text" <?php if(isset($membre['id']) AND $membre['id']) ?>value="<?= nl2br(strip_tags($membre['pseudo']));?>"  required>
+                                <input class="form-control" name="pseudo" id="pseudo" type="text" <?php if(isset($membre['id']) AND $membre['id']) ?>value="<?= nl2br(htmlspecialchars($membre['pseudo']));?>"  required>
                             </div>
                             <br/>
 
                             <div class="form-group">
                             <label for="pass"><strong>Mot de passe : </strong></label>
                             <br/>
-                                <input class="form-control" name="pass" id="pass" type="text" <?php if(isset($membre['id']) AND $membre['id']) ?>value="<?= nl2br(strip_tags($membre['pass']));?>" required>
+                                <input class="form-control" name="pass" id="pass" type="text" <?php if(isset($membre['id']) AND $membre['id']) ?>value="<?= nl2br(htmlspecialchars($membre['pass']));?>" required>
                             </div>
                             <br/>
                             <div class="form-group">
                             <label for="mail"><strong>Mail : </strong></label>
                             <br/>
-                                <input class="form-control" name="mail" id="mail" type="email"  <?php if(isset($membre['id']) AND $membre['id']) ?>value="<?= nl2br(strip_tags($membre['mail']));?>" required>
+                                <input class="form-control" name="mail" id="mail" type="email"  <?php if(isset($membre['id']) AND $membre['id']) ?>value="<?= nl2br(htmlspecialchars($membre['mail']));?>" required>
                             </div>
                             <br/>
                             <br/>

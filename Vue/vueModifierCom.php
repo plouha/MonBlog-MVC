@@ -1,5 +1,9 @@
 <?php
-
+/**
+ * Created by PhpStorm.
+ * User: Bernard Germain
+ * Date: 16/06/2018
+ */
 include_once 'head.php';
 ?>
             
@@ -35,14 +39,14 @@ include_once 'head.php';
                             <br/>                                
                             <label for="val"><strong>Statut du commentaire : </strong></label>
                             <br/>
-                                <input class="form-control" name="val" id="val" type="text" <?php if(isset($commentaire['id']) AND $commentaire['id']) :?> value="<?= strip_tags($commentaire['val']);?>"<?php endif;?>  required>
+                                <input class="form-control" name="val" id="val" type="text" <?php if(isset($commentaire['id']) AND $commentaire['id']) :?> value="<?= htmlspecialchars($commentaire['val']);?>"<?php endif;?>  required>
                             <br/>
                             <label for="contenu"><strong>Contenu : </strong>
                                 <br/>
-
-                                <textarea name="contenu" id="contenu" type="text" rows="5" cols="80"><?php if(isset($commentaire['id']) AND $commentaire['id']) :?> <?= nl2br(strip_tags($commentaire['contenu']));?><?php endif;?></textarea></label></p>
-                            <br/>
                             </label>
+                                <textarea name="contenu" id="contenu" type="text" rows="5" cols="80"><?php if(isset($commentaire['id']) AND $commentaire['id']) :?> <?= nl2br(htmlspecialchars($commentaire['contenu']));?><?php endif;?></textarea></label></p>
+                            <br/>
+
                             
                             <button type="submit" class="btn btn-outline-primary" ">Modifier</button> <a class="btn btn-outline-warning" href="index.php?action=Admin">Retour</a>  
                                 <br/>

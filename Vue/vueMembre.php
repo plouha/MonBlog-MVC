@@ -29,17 +29,21 @@ include_once 'head.php';
                 <form id="contact-form" method="post" role="form" action="index.php?action=enregistrerMembre">
                   <div class="form-group">
                     <label for="pseudo"><strong>Entrez votre pseudo : *</strong></label>
-                    <input type="text" name="pseudo" id="pseudo"  class="form-control" placeholder="Votre pseudo" value="<?php if(isset($pseudo)) echo $pseudo;?>" required>
+                    <input type="text" name="pseudo" id="pseudo"  class="form-control" placeholder="Votre pseudo" value="<?php if(isset($pseudo)) echo htmlspecialchars($pseudo);?>" required>
                   </div>
                   <div class="form-group">
                     <label for="email"><strong>Entrez votre email : *</strong></label>
-                    <input type="email" name="mail" id="mail"  class="form-control" placeholder="Votre email" value="<?php if(isset($mail)) echo $mail;?>" required>
+                    <input type="email" name="mail" id="mail"  class="form-control" placeholder="Votre email" value="<?php if(isset($mail)) echo htmlspecialchars($mail);?>" required>
                   </div>
                   <div class="form-group">
                     <label for="pass"><strong>Entrez votre password : *</strong></label>
                     <input type="password" name="pass" id="pass" class="form-control"  placeholder="Votre password" value="" required>
                   </div>
-                  </br>
+                  <div class="form-group">
+                    <label for="pass"><strong>Retapez votre password : *</strong></label>
+                    <input type="password" name="verif" id="verif" class="form-control"  placeholder="Retapez votre password" value="" required>
+                  </div>
+                    </br>
                   <button type="submit" class="btn btn-outline-primary" >Envoyer</button>
                   <p class="text-muted" ><strong style="color: red">* Ces champs sont obligatoires.</strong> </p>
                 </form>

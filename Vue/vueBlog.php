@@ -31,7 +31,7 @@ include_once 'head.php';
 	  	?>
 
 		<tr>	
-		<td><?= $billet['id']; ?></td><td><?= $billet['titre']; ?></td><td><?= substr($billet['contenu'], 0, 100) .' ...'; ?></td><td><button type="button" class="btn btn-outline-warning btn-sm" ><a href="<?= "index.php?action=modifierBillet&id=" . $billet['id'] ?>">Modifier</a></button></td><td><button type="button" class="btn btn-outline-danger btn-sm" ><a href="<?= "index.php?action=supprimerBillet&id=" . $billet['id'] ?>">Supprimer</a></button></td>
+		<td><?= $billet['id']; ?></td><td><?= htmlspecialchars($billet['titre']); ?></td><td><?= htmlspecialchars(substr($billet['contenu'], 0, 100)) .' ...'; ?></td><td><button type="button" class="btn btn-outline-warning btn-sm" ><a href="<?= "index.php?action=modifierBillet&id=" . $billet['id'] ?>">Modifier</a></button></td><td><button type="button" class="btn btn-outline-danger btn-sm" ><a href="<?= "index.php?action=supprimerBillet&id=" . $billet['id'] ?>">Supprimer</a></button></td>
 		</tr>
 	  <?php }  ?>
  

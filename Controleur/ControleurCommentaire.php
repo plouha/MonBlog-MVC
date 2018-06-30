@@ -1,4 +1,11 @@
 <?php
+
+/**
+ * Created by PhpStorm.
+ * User: Bernard Germain
+ * Date: 28/05/2018
+ */
+
 require_once 'Controleur/ControleurBillet.php';
 require_once 'Modele/Commentaire.php';
 require_once 'Modele/Billet.php';

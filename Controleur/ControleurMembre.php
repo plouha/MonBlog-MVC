@@ -3,7 +3,6 @@
  * Created by PhpStorm.
  * User: bernardgermain
  * Date: 17/06/2018
- * Time: 15:51
  */
 
 require_once 'Vue/Vue.php';
@@ -35,6 +34,20 @@ class ControleurMembre
 
         $this->membre->insertMembre($pseudo, $mail, $pass);
         header("location: index.php?action=confirmeMembre");
+    }
+
+    //erreur de Password
+    public function erreurPwd() {
+
+        $vue = new Vue("erreurPwd");
+        $vue->generer(array (null));
+    }
+
+    //erreur de Password
+    public function erreurMembre() {
+
+        $vue = new Vue("erreurMembre");
+        $vue->generer(array (null));
     }
 
          //affiche la page de confirmation d'inscription d'un membre
@@ -96,8 +109,8 @@ class ControleurMembre
         $membre = $this->membre->getAdminMembre($pseudo, $pass);
 
         if (!$membre) {
-            //on indique que si tout les champs ne sont pas remplis ou une erreur
-            $insert_erreur = true;
+            $vue = new Vue("erreurMembre");
+            $vue->generer(array (null));
 
         } else {
 

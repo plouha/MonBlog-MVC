@@ -27,9 +27,9 @@ session_start();
     <?php foreach ($commentaires as $commentaire){ 
     ?>
     
-    <h5><strong><em><?= $commentaire['auteur'] ?></em></strong></h5><?= date_format(date_create($commentaire['date']), "d-m-Y - H:i") ?>
+    <h5><strong><em><?= htmlspecialchars($commentaire['auteur']) ?></em></strong></h5><?= date_format(date_create($commentaire['date']), "d-m-Y - H:i") ?>
     <br/>
-    <p><?= $commentaire['contenu'] ?></p>
+    <p><?= htmlspecialchars($commentaire['contenu']) ?></p>
     <?php 
     } ?>
 </br>
