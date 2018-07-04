@@ -62,6 +62,4 @@ class ControleurMail {
         $vue->generer(array(null));
     }
 
-}
-
-?>
+}PHP_EOL;

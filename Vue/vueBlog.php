@@ -47,4 +47,4 @@ include_once 'head.php';
 
         </div>
     </div>
-</main>          
+</main><br>

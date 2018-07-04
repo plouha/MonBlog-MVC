@@ -39,4 +39,4 @@ include_once 'head.php';
             </div>
         </div>
     </div>    
-</main>
+</main><br>

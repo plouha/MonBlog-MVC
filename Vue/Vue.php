@@ -50,4 +50,4 @@ class Vue {
         }
     }
 
-}
+}PHP_EOL;

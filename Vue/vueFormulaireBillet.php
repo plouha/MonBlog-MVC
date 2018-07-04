@@ -47,4 +47,4 @@ include_once 'head.php';
 </main>
             <?php
                 }
-            ?>
+            PHP_EOL;

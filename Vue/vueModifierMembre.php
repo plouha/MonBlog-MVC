@@ -74,5 +74,4 @@ include_once 'head.php';
             <?php  
             } else {
                     echo 'pas de session en cours';
-            };
-            ?>
+            }PHP_EOL;

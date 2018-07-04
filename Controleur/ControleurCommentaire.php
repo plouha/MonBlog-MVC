@@ -64,4 +64,4 @@ class ControleurCommentaire {
       $this->blog2();
 
   }
-}
+}PHP_EOL;

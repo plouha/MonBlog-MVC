@@ -79,5 +79,5 @@ include_once 'head.php';
         </form>
     </div>
 </div>
-</main>
+</main><br>
 <!-- Fin du formulaire de mail -->
