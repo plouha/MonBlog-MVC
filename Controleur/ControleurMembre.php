@@ -105,7 +105,7 @@ class ControleurMembre
 
             $_SESSION['id'] = $membre;
             $_SESSION['pseudo'] = $pseudo;
-//            setcookie('pseudo', $_SESSION['pseudo'], time() + 1*24*3600, null, null, false, true);
+            setcookie('pseudo', $_SESSION['pseudo'], time() + 1*24*3600, null, null, false, true);
             $vue = new Vue("AdminMembre");
             $vue->generer(array($_SESSION['id'], $_SESSION['pseudo']));
 
