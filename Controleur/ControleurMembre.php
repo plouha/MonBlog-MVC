@@ -5,7 +5,7 @@
  * Date: 17/06/2018
  */
 
-require_once 'Vue/Vue.php';
+
 require_once 'Modele/Membre.php';
 
 class ControleurMembre

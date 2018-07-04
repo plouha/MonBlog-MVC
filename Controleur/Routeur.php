@@ -5,8 +5,8 @@
  * Date: 26/05/2018
  */
 
-require_once 'Controleur/ControleurAccueil.php';  // on appelle les controleurs
-require_once 'Controleur/ControleurBillet.php';
+
+require_once 'Controleur/ControleurBillet.php';  // on appelle les controleurs
 require_once 'Controleur/ControleurCommentaire.php';
 require_once 'Controleur/ControleurAdmin.php';
 require_once 'Controleur/ControleurMail.php';
@@ -342,5 +342,5 @@ class Routeur {
     }
 
 
-}
+}"\n";
 

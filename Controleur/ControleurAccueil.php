@@ -25,5 +25,5 @@ class ControleurAccueil {
         $vue->generer(array('billets' => $billets));
     }
 
-}
+}"\n";
 

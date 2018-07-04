@@ -67,4 +67,4 @@ class Billet extends Modele {
         return $billets;
     }
 
-}
+}"\n";

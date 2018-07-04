@@ -6,7 +6,7 @@
  */
 
 
-require_once 'Vue/Vue.php';
+
 require_once 'Modele/Mail.php';
 
 class ControleurMail {
@@ -62,4 +62,4 @@ class ControleurMail {
         $vue->generer(array(null));
     }
 
-}PHP_EOL;
+}"\n";
