@@ -78,7 +78,7 @@ class ControleurBillet {
 
     public function vue($params = null) {
     session_start();
-    if ($params == null) {
+    if ($params === null) {
     $vue = new Vue("FormulaireBillet"); // pas de paramètre --> formulaire pour un nouvel article
     $vue->generer(array (null));
     } else {

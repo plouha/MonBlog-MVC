@@ -17,7 +17,7 @@ include_once 'head.php';
           </h3>
 
           <?php
-            if (isset($_SESSION['id']) AND isset($_SESSION['pseudo']))
+            if (isset($_SESSION['id']) && isset($_SESSION['pseudo']))
                 { 
 
                    ?>
@@ -53,7 +53,7 @@ include_once 'head.php';
             <div class="container" >
 
                 <?php
-                    if (isset($insert_erreur) AND $insert_erreur) :
+                    if (isset($insert_erreur) && $insert_erreur) :
                   ?>            
                     <p><strong style="color: red">Mauvais identifiants ... recommencez !</strong></p>
                   

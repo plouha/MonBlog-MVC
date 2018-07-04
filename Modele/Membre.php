@@ -37,7 +37,7 @@ class Membre extends Modele {
 
         }
     }
-//$membre =
+
     //recupere un compte membre
     public function getAdminMembre($pseudo, $pass)
     {

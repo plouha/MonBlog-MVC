@@ -35,7 +35,7 @@ session_start();
 </br>
 
 <?php
-if (isset($_SESSION['id']) AND isset($_SESSION['pseudo']))
+if (isset($_SESSION['id']) && isset($_SESSION['pseudo']))
     {
 ?>
 

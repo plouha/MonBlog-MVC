@@ -280,6 +280,7 @@ class Routeur {
 
                 elseif ($_GET['action'] == 'deconnexion') {     // Déconnexion
                     session_start();
+                    unset($_COOKIE['pseudo']);
                     session_destroy();
                     header("Location: index.php");
                 }
@@ -294,14 +295,17 @@ class Routeur {
 
 
                 elseif ($_GET['action'] == 'sendMail') {            // Enregistrer et envoyer les informations d'un mail
-                    if (!empty($_POST['nom']) && !empty($_POST['prenom']) && !empty($_POST['email']) && !empty($_POST['sujet']) && !empty($_POST['message'])) {
-                        $nom = $this->getParametre($_POST, 'nom');
-                        $prenom = $this->getParametre($_POST, 'prenom');
-                        $email = $this->getParametre($_POST, 'email');
-                        $sujet = $this->getParametre($_POST, 'sujet');
-                        $message = $this->getParametre($_POST, 'message');
-                        $this->ctrlMail->enregistrerMail($nom, $prenom, $email, $sujet, $message);
-                        $this->ctrlMail->sendMail($email, $sujet, $message);
+
+                    if (isset($_POST['nom']) && isset($_POST['prenom']) && isset($_POST['email']) && isset($_POST['sujet']) && isset($_POST['message'])) {
+                        if (!empty($_POST['nom']) && !empty($_POST['prenom']) && !empty($_POST['email']) && !empty($_POST['sujet']) && !empty($_POST['message'])) {
+                            $nom = $this->getParametre($_POST, 'nom');
+                            $prenom = $this->getParametre($_POST, 'prenom');
+                            $email = $this->getParametre($_POST, 'email');
+                            $sujet = $this->getParametre($_POST, 'sujet');
+                            $message = $this->getParametre($_POST, 'message');
+                            $this->ctrlMail->enregistrerMail($nom, $prenom, $email, $sujet, $message);
+                            $this->ctrlMail->sendMail($email, $sujet, $message);
+                        }
                     }
                     else {
                             throw new Exception("Tous les champs ne sont pas remplis");

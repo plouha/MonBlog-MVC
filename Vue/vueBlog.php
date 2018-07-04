@@ -17,7 +17,7 @@ include_once 'head.php';
           </h3>
 
   <?php
-    if (isset($_SESSION['id']) AND isset($_SESSION['pseudo']))
+    if (isset($_SESSION['id']) && isset($_SESSION['pseudo']))
          { ?>
 <div class="container" >
 	<table class="table table-striped table-bordered">

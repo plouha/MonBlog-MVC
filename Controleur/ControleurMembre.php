@@ -11,9 +11,7 @@ require_once 'Modele/Membre.php';
 class ControleurMembre
     {
 
-    private $pseudo;
-    private $mail;
-    private $pass;
+    private $membre;
 
 
     public function __construct()
@@ -89,7 +87,6 @@ class ControleurMembre
 
     //confirme la suppression d'un membre
     public function confirmer3($idCompte) {
-        session_start();
 
         $this->membre->confirmer3($idCompte);
 
@@ -108,7 +105,7 @@ class ControleurMembre
 
             $_SESSION['id'] = $membre;
             $_SESSION['pseudo'] = $pseudo;
-
+//            setcookie('pseudo', $_SESSION['pseudo'], time() + 1*24*3600, null, null, false, true);
             $vue = new Vue("AdminMembre");
             $vue->generer(array($_SESSION['id'], $_SESSION['pseudo']));
 

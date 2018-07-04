@@ -1,0 +1,3 @@
+#----- empêche de lister le contenu du répertoire ----
+#----- Sécurité contre la faille Directory Traversal
+IndexIgnore *

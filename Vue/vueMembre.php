@@ -20,7 +20,7 @@ include_once 'head.php';
             <div class="container" >            <!-- Formulaire d'inscription d'un membre -->
 
                 <?php
-                    if (isset($insert_erreur) AND $insert_erreur) :
+                    if (isset($insert_erreur) && $insert_erreur) :
                   ?>            
                     <p><strong style="color: red">Mauvais identifiants ... recommencez !</strong></p>
                   

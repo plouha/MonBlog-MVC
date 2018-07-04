@@ -20,7 +20,7 @@ include_once 'head.php';
                 <div class="form-row">
                     <h2>Supprimer un commentaire</h2>
 
-                    <form <?php if (isset($commentaire['id']) AND $commentaire['id'])?> action="<?= 'index.php?action=confirmer2&id=' .$commentaire['id']?>" method="post" >
+                    <form <?php if (isset($commentaire['id']) && $commentaire['id'])?> action="<?= 'index.php?action=confirmer2&id=' .$commentaire['id']?>" method="post" >
                         <div class="form-group">
                             <br/> 
                             <br/>                               

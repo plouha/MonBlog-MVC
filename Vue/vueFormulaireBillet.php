@@ -16,14 +16,14 @@ include_once 'head.php';
           </h3>
 
             <?php
-                if (isset($_SESSION['id']) AND isset($_SESSION['pseudo']))
+                if (isset($_SESSION['id']) && isset($_SESSION['pseudo']))
                 {
             ?>
                 <div class="container">
                     <div class="form-row">
                         <h2>Ecrire un nouvel article</h2>
                             <?php
-                                if (isset($insert_erreur) AND $insert_erreur) :
+                                if (isset($insert_erreur) && $insert_erreur) :
                             ?>
                         <p><strong>Veuillez renseigner tout les champs, merci !</strong></p>
                                 <?php                            endif; ?>
