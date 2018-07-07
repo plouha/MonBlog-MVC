@@ -11,8 +11,6 @@ require_once 'Modele/Mail.php';
 
 class ControleurMail {
 
-    private $nom;
-    private $prenom;
     private $email;
     private $sujet;
     private $message;
@@ -28,7 +26,7 @@ class ControleurMail {
     //affiche la page du mail
     public function vueMail($params = null)
     {
-        if ($params == null) {
+        if ($params === null) {
             $vue = new Vue("Mail"); // pas de paramètre --> formulaire pour un nouveau mail
             $vue->generer(array(null));
         }

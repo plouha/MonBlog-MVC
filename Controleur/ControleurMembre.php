@@ -11,10 +11,6 @@ require_once 'Modele/Membre.php';
 class ControleurMembre
     {
 
-    private $pseudo;
-    private $mail;
-    private $pass;
-
 
     public function __construct()
     {

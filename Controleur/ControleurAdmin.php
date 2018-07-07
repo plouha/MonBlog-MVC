@@ -11,8 +11,6 @@ require_once 'Modele/Admin.php';
 
 class ControleurAdmin {
 
-    private $pass;
-    private $pseudo;
     
     public function __construct() {
         $this->admin = new Admin();
