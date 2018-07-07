@@ -5,13 +5,15 @@
  * Date: 17/06/2018
  */
 
-
+require_once 'Vue/Vue.php';
 require_once 'Modele/Membre.php';
 
 class ControleurMembre
     {
 
-    private $membre;
+    private $pseudo;
+    private $mail;
+    private $pass;
 
 
     public function __construct()
@@ -87,6 +89,7 @@ class ControleurMembre
 
     //confirme la suppression d'un membre
     public function confirmer3($idCompte) {
+        session_start();
 
         $this->membre->confirmer3($idCompte);
 
@@ -99,16 +102,18 @@ class ControleurMembre
     //connexion a l'administration d'un membre
     public function adminMembre($pseudo, $pass) {
         session_start();
+        $cookie = setcookie('cookie', mt_rand(1, 50000000000), time() + 1*4*3600, null, null, false, true);
         $pseudo = htmlspecialchars($pseudo);
+        $pass = htmlspecialchars($pass);
 
-        $membre = $this->membre->getAdminMembre($pseudo, $pass);
+        $membre = $this->membre->getAdminMembre($pseudo, $pass, $cookie);
 
             $_SESSION['id'] = $membre;
             $_SESSION['pseudo'] = $pseudo;
-            setcookie('pseudo', $_SESSION['pseudo'], time() + 1*24*3600, null, null, false, true);
-            $vue = new Vue("AdminMembre");
-            $vue->generer(array($_SESSION['id'], $_SESSION['pseudo']));
+            $_COOKIE['cookie'] = $cookie;
 
+            $vue = new Vue("AdminMembre");
+            $vue->generer(array($_SESSION['id'], $_SESSION['pseudo'], $_COOKIE['cookie']));
 
     }
 }

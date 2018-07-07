@@ -19,7 +19,7 @@ abstract class Modele {
      // Exécute une requête SQL éventuellement paramétrée
 
     protected function executerRequete($sql, $params = null) {
-        if ($params === null) {
+        if ($params == null) {
             $resultat = $this->getBdd()->query($sql); // exécution directe si pas de paramètre
         } else {
             $resultat = $this->getBdd()->prepare($sql); // requête préparée si paramètres (empêche les injections SQL)
@@ -31,7 +31,7 @@ abstract class Modele {
      // Renvoie un objet de connexion à la BD en initialisant la connexion
 
     private function getBdd() {
-        if ($this->bdd === null) {
+        if ($this->bdd == null) {
             // Création de la connexion
             $this->bdd = new PDO('mysql:host=localhost;dbname=monblog;charset=utf8',
                     'root', 'root', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING));
@@ -39,4 +39,4 @@ abstract class Modele {
         return $this->bdd;
     }
 
-}PHP_EOL;
+}

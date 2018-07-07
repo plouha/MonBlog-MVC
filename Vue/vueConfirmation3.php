@@ -31,7 +31,7 @@ include_once 'head.php';
                                 Confirmez-vous la suppression de votre compte ?
                             </h5>
 
-                            <button type="submit" class="btn btn-outline-danger">Supprimer</button> <a class="btn btn-outline-warning" href="index.php?action=AdminMembre">Annuler</a>
+                            <button type="submit" class="btn btn-outline-danger">Supprimer</button> <a class="btn btn-outline-warning" href="index.php?action=chercheMembre">Annuler</a>
                                 <br/>
                                 <br/>
                         </div>
@@ -41,4 +41,4 @@ include_once 'head.php';
             </div>
         </div>
     </div>
-</main><br>
+</main>

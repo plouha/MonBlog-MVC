@@ -6,14 +6,14 @@
  * Date: 28/05/2018
  */
 
-
+require_once 'Controleur/ControleurBillet.php';
 require_once 'Modele/Commentaire.php';
 require_once 'Modele/Billet.php';
 require_once 'Vue/Vue.php';
 
 class ControleurCommentaire {
 
-
+  private $billet;
   private $commentaire;
 
   public function __construct() {
@@ -64,4 +64,4 @@ class ControleurCommentaire {
       $this->blog2();
 
   }
-}"\n";
+}

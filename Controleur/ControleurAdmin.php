@@ -6,12 +6,13 @@
  * Date: 05/06/2018
  */
 
-
+require_once 'Vue/Vue.php';
 require_once 'Modele/Admin.php';
 
 class ControleurAdmin {
 
-    private $admin;
+    private $pass;
+    private $pseudo;
     
     public function __construct() {
         $this->admin = new Admin();
@@ -19,6 +20,7 @@ class ControleurAdmin {
     
     //affiche la page d'administration
     public function vue() {
+
        session_start();
        $vue = new Vue("Admin");
        $vue->generer(array(null));
@@ -26,7 +28,6 @@ class ControleurAdmin {
 
     //connexion a l'administration
     public function gestionAdmin($pseudo, $pass) {
-
         $pseudo = htmlspecialchars($pseudo);
         $pass = htmlspecialchars($pass);
       
@@ -38,12 +39,13 @@ class ControleurAdmin {
             header("location: index.php?action=ErreurAdmin");
 
         } else {
+
             session_start();
-            $_SESSION['id'] = $admin;
-            $_SESSION['pseudo'] = $pseudo;
+            $_SESSION['id'] = $pseudo;
+            $_SESSION['admin'] = $pass;
 
             $vue = new Vue("Admin");
-            $vue->generer(array($_SESSION['id'], $_SESSION['pseudo']));
+            $vue->generer(array($_SESSION['id'], $_SESSION['admin']));
 
         }
     }

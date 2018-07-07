@@ -32,4 +32,4 @@ class Admin extends Modele {
         }
     }
 
-}PHP_EOL;
+}

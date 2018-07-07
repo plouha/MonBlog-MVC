@@ -18,4 +18,4 @@
         <p class="text-center"><a href="index.php?action=Admin">Blog</a> construit avec <a href="https://getbootstrap.com/" target="_blank">Bootstrap</a></p>
       <p class="text-center">de <a href="https://twitter.com/mdo" target="_blank">@mdo</a>.</p>
     </div>
-</footer><br>
+</footer>

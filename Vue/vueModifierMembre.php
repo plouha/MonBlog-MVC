@@ -16,10 +16,9 @@ include_once 'head.php';
             </h3>
 
             <?php
+                if (isset($_SESSION['id']) AND isset($_SESSION['pseudo']) && isset($_COOKIE['cookie']))
 
-                if (isset ($_SESSION['id']) && isset($_SESSION['pseudo']))
-
-            {
+                {
 
             ?>
             <div class="container">
@@ -61,7 +60,7 @@ include_once 'head.php';
                             </div>
                             <br/>
                             <br/>
-                            <button type="submit" class="btn btn-outline-primary" >Modifier</button> <a class="btn btn-outline-warning" href="index.php?action=AdminMembre">Retour</a>
+                            <button type="submit" class="btn btn-outline-primary" >Modifier</button> <a class="btn btn-outline-warning" href="index.php?action=chercheMembre">Retour</a>
                             <br/>
                             <br/>
                         </div>
@@ -74,4 +73,5 @@ include_once 'head.php';
             <?php  
             } else {
                     echo 'pas de session en cours';
-            }PHP_EOL;
+            };
+            ?>

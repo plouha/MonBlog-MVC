@@ -17,7 +17,7 @@ include_once 'head.php';
           </h3>
 
           <?php
-            if (isset($_SESSION['id']) && isset($_SESSION['pseudo']))
+            if (isset($_SESSION['id']) && isset($_SESSION['admin']) && !isset($_COOKIE['cookie']))
                 { 
 
                    ?>
@@ -80,4 +80,4 @@ include_once 'head.php';
 
         </div>
     </div>
-</main><br>
+</main>

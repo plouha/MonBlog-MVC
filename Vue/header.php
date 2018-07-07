@@ -12,4 +12,4 @@
           <h1>Le Blog de Bernard</h1>
       </div><br>
 
-</header><br>
+</header>

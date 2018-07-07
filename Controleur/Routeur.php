@@ -5,8 +5,8 @@
  * Date: 26/05/2018
  */
 
-
-require_once 'Controleur/ControleurBillet.php';  // on appelle les controleurs
+require_once 'Controleur/ControleurAccueil.php';  // on appelle les controleurs
+require_once 'Controleur/ControleurBillet.php';
 require_once 'Controleur/ControleurCommentaire.php';
 require_once 'Controleur/ControleurAdmin.php';
 require_once 'Controleur/ControleurMail.php';
@@ -198,8 +198,9 @@ class Routeur {
                     if (isset($_POST['pseudo']) && $_POST['pass']) {
 
                         if (!empty($_POST['pseudo']) && !empty($_POST['pass'])) {
-
-                            $this->ctrlMembre->adminMembre($_POST['pseudo'], $_POST['pass']);
+                            $pseudo = $this->getParametre($_POST, 'pseudo');
+                            $pass = $this->getParametre($_POST, 'pass');
+                            $this->ctrlMembre->adminMembre($pseudo, $pass);
                         }
                         else {
                             $this->ctrlMembre->erreurMembre();
@@ -280,7 +281,7 @@ class Routeur {
 
                 elseif ($_GET['action'] == 'deconnexion') {     // Déconnexion
                     session_start();
-                    unset($_COOKIE['pseudo']);
+                    setcookie ("cookie", "", time() - (24*3600));
                     session_destroy();
                     header("Location: index.php");
                 }
@@ -295,17 +296,14 @@ class Routeur {
 
 
                 elseif ($_GET['action'] == 'sendMail') {            // Enregistrer et envoyer les informations d'un mail
-
-                    if (isset($_POST['nom']) && isset($_POST['prenom']) && isset($_POST['email']) && isset($_POST['sujet']) && isset($_POST['message'])) {
-                        if (!empty($_POST['nom']) && !empty($_POST['prenom']) && !empty($_POST['email']) && !empty($_POST['sujet']) && !empty($_POST['message'])) {
-                            $nom = $this->getParametre($_POST, 'nom');
-                            $prenom = $this->getParametre($_POST, 'prenom');
-                            $email = $this->getParametre($_POST, 'email');
-                            $sujet = $this->getParametre($_POST, 'sujet');
-                            $message = $this->getParametre($_POST, 'message');
-                            $this->ctrlMail->enregistrerMail($nom, $prenom, $email, $sujet, $message);
-                            $this->ctrlMail->sendMail($email, $sujet, $message);
-                        }
+                    if (!empty($_POST['nom']) && !empty($_POST['prenom']) && !empty($_POST['email']) && !empty($_POST['sujet']) && !empty($_POST['message'])) {
+                        $nom = $this->getParametre($_POST, 'nom');
+                        $prenom = $this->getParametre($_POST, 'prenom');
+                        $email = $this->getParametre($_POST, 'email');
+                        $sujet = $this->getParametre($_POST, 'sujet');
+                        $message = $this->getParametre($_POST, 'message');
+                        $this->ctrlMail->enregistrerMail($nom, $prenom, $email, $sujet, $message);
+                        $this->ctrlMail->sendMail($email, $sujet, $message);
                     }
                     else {
                             throw new Exception("Tous les champs ne sont pas remplis");
@@ -342,5 +340,5 @@ class Routeur {
     }
 
 
-}"\n";
+}
 

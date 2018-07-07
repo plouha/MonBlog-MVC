@@ -6,7 +6,7 @@
  */
 
 
-
+require_once 'Modele/Billet.php';
 require_once 'Modele/Commentaire.php';
 require_once 'Vue/Vue.php';
 
@@ -78,7 +78,7 @@ class ControleurBillet {
 
     public function vue($params = null) {
     session_start();
-    if ($params === null) {
+    if ($params == null) {
     $vue = new Vue("FormulaireBillet"); // pas de paramètre --> formulaire pour un nouvel article
     $vue->generer(array (null));
     } else {
@@ -88,5 +88,5 @@ class ControleurBillet {
       }
     }
 
-}"\n";
+}
 

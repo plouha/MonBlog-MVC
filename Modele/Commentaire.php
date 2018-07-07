@@ -72,4 +72,4 @@ class Commentaire extends Modele {
         $this->executerRequete($sql, array($idCom));        
 
     }
-}"\n";
+}

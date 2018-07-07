@@ -16,7 +16,7 @@ include_once 'head.php';
           </h3>
 
             <?php
-                if (isset($_SESSION['id']) && isset($_SESSION['pseudo']))
+                if (isset($_SESSION['id']) && isset($_SESSION['admin']))
                 {
             ?>
                 <div class="container">
@@ -47,4 +47,4 @@ include_once 'head.php';
 </main>
             <?php
                 }
-            PHP_EOL;
+            ?>
