@@ -16,7 +16,7 @@ include_once 'head.php';
             </h3>
 
             <?php
-                if (isset($_SESSION['id']) AND isset($_SESSION['pseudo']) && isset($_COOKIE['cookie']))
+                if (isset($_SESSION['id']) && isset($_SESSION['pseudo']) && isset($_COOKIE['cookie']))
 
                 {
 
