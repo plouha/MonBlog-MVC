@@ -13,7 +13,7 @@ require_once 'Vue/Vue.php';
 
 class ControleurCommentaire {
 
-  private $billet;
+
   private $commentaire;
 
   public function __construct() {
