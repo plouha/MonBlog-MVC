@@ -23,7 +23,7 @@ class ControleurCommentaire {
 
   //affiche le formulaire de moderation d'un commentaire
   public function vue($idCom) {
-      session_start();
+//      session_start();
 
       $commentaire = $this->commentaire->getCommentaire($idCom);
 
@@ -34,7 +34,7 @@ class ControleurCommentaire {
 
   // Affiche la liste de tous les commentaires du blog
   public function blog2() {
-        session_start();
+//        session_start();
         $blog2 = $this->commentaire->getBlog2();
         $vue = new Vue("Blog2");
         $vue->generer(array('blog2' => $blog2));
@@ -43,7 +43,7 @@ class ControleurCommentaire {
   
   //Confirme la modification d'un commentaire
   public function moderer($idCom, $val, $contenu) {
-       session_start();
+
       $this->commentaire->moder($idCom, $val, $contenu);
       $vue = new Vue("Admin"); // on revient au menu administrateur
       $vue->generer(array(NULL));
@@ -51,7 +51,7 @@ class ControleurCommentaire {
   
   //affiche la page de confirmation de suppression d'un commentaire
   public function vueConfirmation2($idCom) {
-      session_start();
+
       $commentaire = $this->commentaire->getCommentaire($idCom);
 
       $vue = new Vue("Confirmation2");

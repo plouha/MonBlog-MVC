@@ -1,4 +1,5 @@
 <?php
+session_start();
 /**
  * Created by PhpStorm.
  * User: Bernard Germain
@@ -17,7 +18,7 @@ include_once 'head.php';
           </h3>
 
   <?php
-    if (isset($_SESSION['id']) && isset($_SESSION['admin']))
+    if (isset($_COOKIE['admin']))
          { ?>
 <div class="container" >
 	<table class="table table-striped table-bordered">
@@ -31,7 +32,7 @@ include_once 'head.php';
 	  	?>
 
 		<tr>	
-		<td><?= $billet['id']; ?></td><td><?= htmlspecialchars($billet['titre']); ?></td><td><?= htmlspecialchars(substr($billet['contenu'], 0, 100)) .' ...'; ?></td><td><button type="button" class="btn btn-outline-warning btn-sm" ><a href="<?= "index.php?action=modifierBillet&id=" . $billet['id'] ?>">Modifier</a></button></td><td><button type="button" class="btn btn-outline-danger btn-sm" ><a href="<?= "index.php?action=supprimerBillet&id=" . $billet['id'] ?>">Supprimer</a></button></td>
+		<td><?= $billet['id']; ?></td><td><?= htmlspecialchars($billet['titre']); ?></td><td><?= htmlspecialchars(substr($billet['contenu'], 0, 100)) .' ...'; ?></td><td><button type="button" class="btn btn-outline-warning btn-sm" ><a href="<?= "./index.php?action=modifierBillet&id=" . $billet['id'] ?>">Modifier</a></button></td><td><button type="button" class="btn btn-outline-danger btn-sm" ><a href="<?= "index.php?action=supprimerBillet&id=" . $billet['id'] ?>">Supprimer</a></button></td>
 		</tr>
 	  <?php }  ?>
  
@@ -41,7 +42,8 @@ include_once 'head.php';
 	<br/>
 	<br/>
 </div>
-  <?php }  ?> 
+  <?php
+   }  ?>
 
 
 

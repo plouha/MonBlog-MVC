@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * User: Bernard Germain
@@ -16,9 +17,14 @@ include_once 'head.php';
           </h3>
 
           <?php
-            if (isset($_SESSION['id']) && isset($_SESSION['pseudo']) && isset($_COOKIE['cookie'])) {
-                $utilisateur = "";
-                $utilisateur = $_SESSION['id'];
+            if (isset($_COOKIE['id'])) {
+
+                if (isset($_SESSION['id'])) {
+
+                    $utilisateur = "";
+                    $utilisateur = $_SESSION['id'];
+                }
+
 
             ?>
 
@@ -28,7 +34,7 @@ include_once 'head.php';
             </div>
             <div class="container" >
                 <div class="form-row">
-                    <button type="button" class="btn btn-lg btn-block btn-outline-warning"><a href="./index.php" class="alert-link">Aller sur le site</a></button>
+                    <button type="button" class="btn btn-lg btn-block btn-outline-warning"><a href="<?= "index.php?id=" . $utilisateur['id'] ?>" class="alert-link">Aller sur le site</a></button>
                 </div>
             
                 <br/>

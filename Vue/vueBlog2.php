@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * User: Bernard Germain
@@ -16,8 +17,8 @@ include_once 'head.php';
             <strong>ADMINISTRATION des COMMENTAIRES</strong>
           </h3>
 
-  <?php
-    if (isset($_SESSION['id']) && isset($_SESSION['admin']))
+            <?php
+                if (isset($_COOKIE['admin']))
             { ?>
 <div class="container" >
 	<table class="table table-striped table-bordered">
@@ -31,7 +32,7 @@ include_once 'head.php';
 	  ?>
 
 		<tr>	
-		<td><?= $comment['id']; ?></td><td><?= $comment['val']; ?></td><td><?= htmlspecialchars(date_format(date_create($comment['date']), "d-m-Y - H:i")); ?></td><td><?= htmlspecialchars($comment['auteur']); ?></td><td><?= htmlspecialchars($comment['contenu']); ?></td><td><button type="button" class="btn btn-outline-warning btn-sm" ><a href="<?= "index.php?action=modifierCom&id=" . $comment['id'] ?>">Modifier</a></button></td><td><button type="button" class="btn btn-outline-danger btn-sm" ><a href="<?= "index.php?action=supprimerCom&id=" . $comment['id'] ?>">Supprimer</a></button></td>
+		<td><?= $comment['id']; ?></td><td><?= $comment['val']; ?></td><td><?= htmlspecialchars(date_format(date_create($comment['date']), "d-m-Y - H:i")); ?></td><td><?= htmlspecialchars($comment['auteur']); ?></td><td><?= htmlspecialchars($comment['contenu']); ?></td><td><button type="button" class="btn btn-outline-warning btn-sm" ><a href="<?= "./index.php?action=modifierCom&id=" . $comment['id'] ?>">Modifier</a></button></td><td><button type="button" class="btn btn-outline-danger btn-sm" ><a href="<?= "index.php?action=supprimerCom&id=" . $comment['id'] ?>">Supprimer</a></button></td>
 		</tr>
 	  <?php }  ?>
  
@@ -41,9 +42,8 @@ include_once 'head.php';
 	<br/>
 	<br/>
 </div>
-  <?php }  ?> 
-
-
+     <?php
+     }  ?>
 
         </div>
     </div>

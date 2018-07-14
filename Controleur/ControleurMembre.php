@@ -19,7 +19,7 @@ class ControleurMembre
 
     //affiche la page d'inscription
     public function vueMembre() {
-        session_start();
+
             $vue = new Vue("Membre"); // Affiche formulaire pour un nouveau membre
             $vue->generer(array(null));
     }
@@ -53,41 +53,41 @@ class ControleurMembre
     }
 
     public function chercheMembre() { // page pour chercher un membre
-        session_start();
+
         $vue = new Vue("AdminMembre");
         $vue->generer(array(null));
     }
 
     //affiche la page de modification du membre
-    public function vue($idCompte) {
-        session_start();
-        $membre = $this->membre->getMembre($idCompte);    // Récupère les données pour modifier le membre choisi
+    public function vue($id) {
 
+        $membre = $this->membre->getMembre($id);    // Récupère les données pour modifier le membre choisi
+        session_start();
         $vue = new Vue("ModifierMembre");
         $vue->generer(array('membre' => $membre));
 
     }    
 
-    public function modifMembre($idCompte, $pseudo, $pass, $mail) { // MAJ des données du membre
+    public function modifMembre($id, $pseudo, $pass, $mail) { // MAJ des données du membre
+
+        $this->membre->updateMembre($id, $pseudo, $pass, $mail);
         session_start();
-        $this->membre->updateMembre($idCompte, $pseudo, $pass, $mail);
         $vue = new Vue("AdminMembre");
-        $vue->generer(array(NULL));
+        $vue->generer(array($id));
     }
 
-    public function confirmation3($idCompte) {       // Suppression du membre
+    public function confirmation3($id) {       // Suppression du membre
 
-        $membre = $this->membre->getMembre ($idCompte);
+        $membre = $this->membre->getMembre ($id);
 
         $vue = new Vue("Confirmation3");
         $vue->generer(array('membre' => $membre));
     }
 
     //confirme la suppression d'un membre
-    public function confirmer3($idCompte) {
-        session_start();
+    public function confirmer3($id) {
 
-        $this->membre->confirmer3($idCompte);
+        $this->membre->confirmer3($id);
 
         session_start();
         session_destroy();
@@ -97,19 +97,17 @@ class ControleurMembre
 
     //connexion a l'administration d'un membre
     public function adminMembre($pseudo, $pass) {
-        session_start();
-        $cookie = setcookie('cookie', mt_rand(1, 50000000000), time() + 1*4*3600, null, null, false, true);
+
         $pseudo = htmlspecialchars($pseudo);
         $pass = htmlspecialchars($pass);
+        $membre = $this->membre->getAdminMembre($pseudo, $pass);
+        $_COOKIE['id'] = setcookie('id', mt_rand(1, 50000000000), time() + 1*4*3600, null, null, false, true);
+        session_start();
+        $_SESSION['id'] = $membre;
 
-        $membre = $this->membre->getAdminMembre($pseudo, $pass, $cookie);
-
-            $_SESSION['id'] = $membre;
-            $_SESSION['pseudo'] = $pseudo;
-            $_COOKIE['cookie'] = $cookie;
 
             $vue = new Vue("AdminMembre");
-            $vue->generer(array($_SESSION['id'], $_SESSION['pseudo'], $_COOKIE['cookie']));
+            $vue->generer(array($_SESSION['id'], $_COOKIE['id']));
 
     }
 }

@@ -17,8 +17,8 @@ include_once 'head.php';
           </h3>
 
           <?php
-            if (isset($_SESSION['id']) && isset($_SESSION['admin']) && !isset($_COOKIE['cookie']))
-                { 
+            if (isset($_COOKIE['admin']))
+                {
 
                    ?>
 
@@ -28,16 +28,16 @@ include_once 'head.php';
             </div>
             <div class="container" >
                 <div class="form-row">
-                    <button type="button" class="btn btn-lg btn-block btn-outline-warning"><a href="index.php?action=formulaireBillet" class="alert-link">Ecrire un nouvel article</a></button>
+                    <button type="button" class="btn btn-lg btn-block btn-outline-warning"><a href="./index.php?action=formulaireBillet" class="alert-link">Ecrire un nouvel article</a></button>
                 </div>
             
                 <br/>
                 <div class="form-row">
-                    <button type="button" class="btn btn-lg btn-block btn-outline-warning"><a href="index.php?action=blog" class="alert-link">Modifier ou supprimer un article</a></button>
+                    <button type="button" class="btn btn-lg btn-block btn-outline-warning"><a href="./index.php?action=blog" class="alert-link">Modifier ou supprimer un article</a></button>
                 </div>
                 <br/>
                 <div class="form-row">
-                    <button type="button" class="btn btn-lg btn-block btn-outline-warning"><a href="index.php?action=blog2" class="alert-link">Modérer un commentaire</a></button>
+                    <button type="button" class="btn btn-lg btn-block btn-outline-warning"><a href="./index.php?action=blog2" class="alert-link">Modérer un commentaire</a></button>
                 </div>
             </div>    
                 <br/>
@@ -66,7 +66,7 @@ include_once 'head.php';
                   </div>
                   <div class="form-group">
                     <label for="exampleInputPassword1"><strong>Entrez votre password</strong></label>
-                    <input name="pass" id="pass" type=password class="form-control"  placeholder="Votre password" required>
+                    <input name="pass" id="pass" type="password" class="form-control"  placeholder="Votre password" required>
                   </div>
                   </br>
                   <button type="submit" class="btn btn-outline-primary">Se connecter</button>

@@ -33,6 +33,7 @@ class Routeur {
         $this->ctrlAdmin = new ControleurAdmin();               // création d'une instance de ControleurAdmin
         $this->ctrlMail = new ControleurMail();                 // création d'une instance de ControleurMail
         $this->ctrlMembre = new ControleurMembre();             // création d'une instance de ControleurMembre
+
     }
 
 
@@ -209,9 +210,9 @@ class Routeur {
                 }
 
                 elseif ($_GET['action'] == 'modifierMembre') {          // Page de modification d'un membre
-                    $idCompte = intval($this->getParametre($_GET, 'id'));
-                    if ($idCompte != 0) {
-                        $this->ctrlMembre->vue($idCompte);
+                    $id = intval($this->getParametre($_GET, 'id'));
+                    if ($id != 0) {
+                        $this->ctrlMembre->vue($id);
                     }
                     else {
                         throw new Exception("Identifiant de compte non valide");
@@ -220,18 +221,18 @@ class Routeur {
                 }
 
                 elseif ($_GET['action'] == 'modifMembre') {        // enregistre la mofication d'un membre
-                    $idCompte = intval($this->getParametre($_GET, 'id'));
+                    $id = intval($this->getParametre($_GET, 'id'));
 
                     $_POST ['pass'] = password_hash($_POST['pass'], PASSWORD_DEFAULT);
 
-                    if ($idCompte != 0) {
+                    if ($id != 0) {
                         if (!empty($_POST['pseudo']) && !empty($_POST['pass']) && !empty($_POST['mail'])) {
 
                             $pseudo = $this->getParametre($_POST, 'pseudo');
                             $pass = $this->getParametre($_POST, 'pass');
                             $mail = $this->getParametre($_POST, 'mail');
 
-                            $this->ctrlMembre->modifMembre($idCompte, $pseudo, $pass, $mail);
+                            $this->ctrlMembre->modifMembre($id, $pseudo, $pass, $mail);
 
                         }
                     } else {
@@ -241,10 +242,10 @@ class Routeur {
 
                 elseif ($_GET['action'] == 'supprimerCompte') {
 
-                    $idCompte = intval($this->getParametre($_GET, 'id'));
-                    if ($idCompte != 0) {
+                    $id = intval($this->getParametre($_GET, 'id'));
+                    if ($id != 0) {
 
-                        $this->ctrlMembre->Confirmation3($idCompte);   // Affiche le formulaire de confirmation
+                        $this->ctrlMembre->Confirmation3($id);   // Affiche le formulaire de confirmation
                     } else {
                         throw new Exception("Identifiant de compte non valide");
                     }
@@ -253,17 +254,18 @@ class Routeur {
 
                 elseif ($_GET['action'] == 'confirmer3') {           // Confirme la suppression d'un membre
 
-                    $idCompte = $this->getParametre($_GET, 'id');
+                    $id= $this->getParametre($_GET, 'id');
 
-                    $this->ctrlMembre->confirmer3($idCompte);
+                    $this->ctrlMembre->confirmer3($id);
 
                 }
 
 // --------------------------------------------------------------------------------- ADMINISTRATION DU BLOG --------------------
 
 
-                elseif ($_GET['action'] == 'Admin') {               // Affiche le menu administrateur
-                    $this->ctrlAdmin->vue();
+                elseif ($_GET['action'] == 'Admin') {               // Affiche le menu administrateur si session
+                        $this->ctrlAdmin->vue();
+
 
                 }
 
@@ -281,8 +283,11 @@ class Routeur {
 
                 elseif ($_GET['action'] == 'deconnexion') {     // Déconnexion
                     session_start();
-                    setcookie ("cookie", "", time() - (24*3600));
                     session_destroy();
+                    setcookie ("admin", "", time() - (24*3600));
+                    setcookie ("id", "", time() - (24*3600));
+                    unset($_COOKIE['admin']);
+                    unset($_COOKIE['id']);
                     header("Location: index.php");
                 }
 

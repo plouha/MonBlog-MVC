@@ -5,6 +5,8 @@
  * User: Bernard Germain
  * Date: 26/05/2018
  */
+
+
 include_once 'head.php';
 ?>
             
@@ -16,7 +18,7 @@ include_once 'head.php';
           </h3>
 
             <?php
-                if (isset($_SESSION['id']) && isset($_SESSION['admin']))
+                if (isset($_COOKIE['admin']))
                 {
             ?>
                 <div class="container">
@@ -32,7 +34,7 @@ include_once 'head.php';
                                 <label for="titre"><strong>Titre : </strong></label>
                                 <input class="form-control" placeholder="Titre de l'article" name="titre" id="titre" type=text required>
                                 <label for="contenu"><strong>Contenu : </strong>
-                                <textarea name="contenu" id="contenu" rows="20" cols="80" required></textarea></label>
+                                <textarea name="contenu" id="contenu" class="form-control" rows="20" cols="80" required></textarea></label>
                                 <br/>
                                 <button type="submit" class="btn btn-outline-primary">Enregistrer</button> <a class="btn btn-outline-warning" href="index.php?action=Admin">Retour</a>
                                 <br/>

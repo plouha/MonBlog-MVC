@@ -5,26 +5,28 @@ session_start();
  * User: Bernard Germain
  * Date: 26/05/2018
  */
+
 ?>
 
 <article>
     <header>
         <h1><?= $billet['titre'] ?></h1>
-        <strong><?= $billet['auteur'] ?></strong> - <?= date_format(date_create($billet['date']), "d-m-Y") ?><br/>
-        <br/>
+        <?= date_format(date_create($billet['date']), "d-m-Y") ?> - <strong><?= $billet['auteur'] ?></strong><br>
+        <br>
     </header>
     <p><?= $billet['contenu'] ?></p>
 </article>
-</br>
+<br>
 <hr />
-<header>
-</header>
+<!-- <header>
+</header> -->
     <h2 class="pb-3 mb-4 font-italic border-bottom">
         Commentaire(s)
     </h2><br/>
 
-</header>
+<!--</header>-->
     <?php foreach ($commentaires as $commentaire) {
+
     ?>
     
     <h5><strong><em><?= htmlspecialchars($commentaire['auteur']) ?></em></strong></h5><?= date_format(date_create($commentaire['date']), "d-m-Y - H:i") ?>
@@ -35,8 +37,10 @@ session_start();
 </br>
 
 <?php
-if (isset($_SESSION['id']) && isset($_SESSION['pseudo'])  && isset($_COOKIE['cookie']))
-    {
+
+if (isset($_COOKIE['id']))
+
+   {
 ?>
 
 <hr />
@@ -49,11 +53,11 @@ if (isset($_SESSION['id']) && isset($_SESSION['pseudo'])  && isset($_COOKIE['coo
 
 <form method="post" action="index.php?action=commenter">
     <h5><em>Pseudo</em></h5>
-    <input id="auteur" name="auteur" type="text" placeholder="Votre pseudo" required />
+    <input id="auteur" name="auteur" type="text" class="form-control" placeholder="Votre pseudo" required />
     <br />
     <br />
     <h5><em>Commentaire</em></h5>
-    <textarea id="contenu" name="contenu" rows="8" cols="80" placeholder="Votre commentaire" required></textarea>
+    <textarea id="contenu" name="contenu" class="form-control" rows="8" cols="80" placeholder="Votre commentaire" required></textarea>
     <br />
     <br />
     <input type="hidden" name="id" value="<?= $billet ['id'] ?>" />
@@ -62,9 +66,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['pseudo'])  && isset($_COOKIE['coo
 </br>
 
 <?php
-
- } else {
-        echo " ";
  } ?>
 
 

@@ -5,6 +5,7 @@
  * User: Bernard Germain
  * Date: 16/06/2018
  */
+session_start();
 include_once 'head.php';
 ?>
             
@@ -16,8 +17,8 @@ include_once 'head.php';
           </h3>
 
             <?php
-                if (isset($_SESSION['id']) && isset($_SESSION['admin']))
-                {
+              if (isset($_COOKIE['admin']))
+            {
             ?>
             <div class="container">
                 <div class="form-row">
@@ -41,11 +42,11 @@ include_once 'head.php';
                             <label for="contenu"><strong>Contenu : </strong>
                                 <br/>
 
-                                <textarea name="contenu" id="contenu" rows="20" cols="80"><?php if (isset($billet['id']) && $billet['id']) :?><?= nl2br(htmlspecialchars($billet['contenu'])); ?><?php endif; ?></textarea></label></p>
+                                <textarea name="contenu" id="contenu" class="form-control" rows="20" cols="80"><?php if (isset($billet['id']) && $billet['id']) :?><?= nl2br(htmlspecialchars($billet['contenu'])); ?><?php endif; ?></textarea></label>
                             <br/>
-                            </label>
+
                             
-                            <button type="submit" class="btn btn-outline-primary" ">Modifier</button>   <a class="btn btn-outline-warning" href="index.php?action=Admin">Retour</a>
+                            <button type="submit" class="btn btn-outline-primary" >Modifier</button>   <a class="btn btn-outline-warning" href="index.php?action=blog">Retour</a>
                                 <br/>
                                 <br/>
                         </div>

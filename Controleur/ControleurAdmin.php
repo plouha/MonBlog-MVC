@@ -19,9 +19,17 @@ class ControleurAdmin {
     //affiche la page d'administration
     public function vue() {
 
-       session_start();
-       $vue = new Vue("Admin");
-       $vue->generer(array(null));
+
+        if(isset($_COOKIE['admin'])){
+
+        $vue = new Vue("Admin");
+        $vue->generer(array($_COOKIE['admin']));
+
+        } else{
+            $vue = new Vue("Admin");
+            $vue->generer(array(null));
+        }
+
     }
 
     //connexion a l'administration
@@ -38,12 +46,11 @@ class ControleurAdmin {
 
         } else {
 
-            session_start();
-            $_SESSION['id'] = $pseudo;
-            $_SESSION['admin'] = $pass;
+            $cookie = setcookie('admin', mt_rand(1, 50000000000), time() + 1*4*3600, null, null, false, true);
+            $_COOKIE['admin'] = $cookie;
 
             $vue = new Vue("Admin");
-            $vue->generer(array($_SESSION['id'], $_SESSION['admin']));
+            $vue->generer(array($_COOKIE['admin']));
 
         }
     }

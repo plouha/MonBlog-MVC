@@ -1,9 +1,11 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * User: Bernard Germain
  * Date: 16/06/2018
  */
+
 include_once 'head.php';
 ?>
             
@@ -14,8 +16,8 @@ include_once 'head.php';
             <strong>ADMINISTRATION</strong>
           </h3>
 
-            <?php
-                if (isset($_SESSION['id']) && isset($_SESSION['admin']))
+             <?php
+                 if (isset($_COOKIE['admin']))
                 {
             ?>
             <div class="container">
@@ -43,24 +45,20 @@ include_once 'head.php';
                             <br/>
                             <label for="contenu"><strong>Contenu : </strong>
                                 <br/>
-
-                            </label>
+                                <textarea name="contenu" id="contenu" class="form-control" rows="5" cols="80"><?php if (isset($commentaire['id']) && $commentaire['id']) :?> <?= nl2br(htmlspecialchars($commentaire['contenu']));?><?php endif;?></textarea></label>
                             <br/>
-                                <textarea name="contenu" id="contenu" type="text" rows="5" cols="80"><?php if (isset($commentaire['id']) && $commentaire['id']) :?> <?= nl2br(htmlspecialchars($commentaire['contenu']));?><?php endif;?></textarea></label></p>
-                            <br/>
-
                             
-                            <button type="submit" class="btn btn-outline-primary" ">Modifier</button> <a class="btn btn-outline-warning" href="index.php?action=Admin">Retour</a>  
+                            <button type="submit" class="btn btn-outline-primary" >Modifier</button> <a class="btn btn-outline-warning" href="index.php?action=blog2">Retour</a>
                                 <br/>
                                 <br/>
                         </div>
+
                     </form>               
                 </div>
             </div>
         </div>
-    </div>    
+    </div>
 </main>
-
-            <?php  
+            <?php
             } ;
             ?>

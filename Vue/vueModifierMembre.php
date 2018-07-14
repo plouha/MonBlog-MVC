@@ -1,11 +1,12 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * User: Bernard Germain
  * Date: 16/06/2018
  */
-include_once 'head.php';
-
+//
+var_dump($membre['id']);
 ?>
 
 <main role="main" class="container">
@@ -16,23 +17,22 @@ include_once 'head.php';
             </h3>
 
             <?php
-                if (isset($_SESSION['id']) && isset($_SESSION['pseudo']) && isset($_COOKIE['cookie']))
+            if (isset($_COOKIE['id']) OR isset($_SESSION['id'])) {
 
-                {
 
             ?>
             <div class="container">
                     <p><h2>Modifier votre compte</h2></p>
 
 
-                <?php
-                    if(isset($insert_erreur) && isset($insert_erreur)) {
-                ?>
+                    <?php
+                        if(isset($insert_erreur) && isset($insert_erreur)) {
+                    ?>
 
                     <p><strong>Veuillez renseigner tout les champs, merci !</strong></p>
 
                 <?php
-                    } ;
+                    }
 
                 ?>
 
@@ -60,7 +60,7 @@ include_once 'head.php';
                             </div>
                             <br/>
                             <br/>
-                            <button type="submit" class="btn btn-outline-primary" >Modifier</button> <a class="btn btn-outline-warning" href="index.php?action=chercheMembre">Retour</a>
+                            <button type="submit" class="btn btn-outline-primary" >Modifier</button> <a class="btn btn-outline-warning" href="index.php?action=adminMembre">Retour</a>
                             <br/>
                             <br/>
                         </div>
@@ -68,10 +68,13 @@ include_once 'head.php';
             </div>
         </div>
     </div>  
-</main>
 
-            <?php  
-            } else {
+
+            <?php
+            }
+
+            else {
                     echo 'pas de session en cours';
-            };
+            }
             ?>
+</main>

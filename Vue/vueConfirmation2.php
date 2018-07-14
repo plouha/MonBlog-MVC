@@ -30,7 +30,7 @@ include_once 'head.php';
                                 Confirmez-vous la suppression de ce commentaire ?
                             </h5>
                             
-                            <button type="submit" class="btn btn-outline-danger">Supprimer</button> <a class="btn btn-outline-warning" href="index.php?action=Admin">Annuler</a>
+                            <button type="submit" class="btn btn-outline-danger">Supprimer</button> <a class="btn btn-outline-warning" href="index.php?action=blog2">Annuler</a>
                                 <br/>
                                 <br/>                            
                         </div>

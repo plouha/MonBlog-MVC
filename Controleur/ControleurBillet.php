@@ -22,6 +22,7 @@ class ControleurBillet {
 
     // Affiche les détails sur un article
     public function billet($idBillet) {
+
         $billet = $this->billet->getBillet($idBillet);
         $commentaires = $this->commentaire->getCommentaires($idBillet);
         $vue = new Vue("Billet");
@@ -43,8 +44,7 @@ class ControleurBillet {
     }
 
     //modifie un article
-    public function modifierBillet($idBillet, $titre, $contenu) { 
-        session_start();
+    public function modifierBillet($idBillet, $titre, $contenu) {
 
         $this->billet->modifBillet($idBillet, $titre, $contenu); 
 
@@ -54,7 +54,7 @@ class ControleurBillet {
 
     //affiche la page de confirmation de suppression d'un article
     public function vueConfirmation($idBillet) {
-        session_start();
+
         $billet = $this->billet->getBillet($idBillet);
 
         $vue = new Vue("Confirmation");
@@ -70,14 +70,14 @@ class ControleurBillet {
 
     // Affiche la liste de tous les billets du blog
     public function blog() {
-        session_start();
+
         $blog = $this->billet->getBlog();
         $vue = new Vue("Blog");
         $vue->generer(array('blog' => $blog));
     }
 
     public function vue($params = null) {
-    session_start();
+
     if ($params === null) {
     $vue = new Vue("FormulaireBillet"); // pas de paramètre --> formulaire pour un nouvel article
     $vue->generer(array (null));
